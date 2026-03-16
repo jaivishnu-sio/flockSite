@@ -17,7 +17,7 @@ const upcomingTrainings = [
     type: "In-Person",
     description: "Three-day intensive training for VBS directors covering program planning, volunteer management, and effective teaching strategies.",
     spots: "Limited Spots",
-    color: "#5ABCB9",
+    color: "#00C9B7",
   },
   {
     title: "Sunday School Teacher Workshop",
@@ -26,7 +26,7 @@ const upcomingTrainings = [
     type: "Virtual",
     description: "Practical workshop on classroom management, lesson preparation, and engaging children with Scripture.",
     spots: "Open Registration",
-    color: "#8DC63F",
+    color: "#7ED321",
   },
   {
     title: "Children's Ministry Conference 2026",
@@ -75,19 +75,19 @@ const trainingTracks = [
     title: "VBS Track",
     description: "Everything you need to run successful Vacation Bible School programs.",
     modules: ["Program Planning", "Theme Development", "Volunteer Training", "Day-of Logistics", "Follow-up Ministry"],
-    color: "#5ABCB9",
+    color: "#00C9B7",
   },
   {
     title: "Sunday School Track",
     description: "Build effective year-round discipleship for children.",
     modules: ["Curriculum Selection", "Classroom Management", "Teaching Methods", "Parent Communication", "Assessment"],
-    color: "#8DC63F",
+    color: "#7ED321",
   },
   {
     title: "Leadership Track",
     description: "Develop and lead high-functioning children's ministry teams.",
     modules: ["Vision Casting", "Team Building", "Volunteer Care", "Strategic Planning", "Budget Management"],
-    color: "#9B8BB4",
+    color: "#A78BFA",
   },
   {
     title: "Evangelism Track",
@@ -103,23 +103,23 @@ export default function TrainingPage() {
       <Header />
       <main>
         {/* Hero - Different design from main page */}
-        <section className="pt-32 lg:pt-40 pb-16 px-6 bg-gradient-to-b from-[#9B8BB4]/10 to-background relative overflow-hidden">
+        <section className="pt-32 lg:pt-40 pb-16 px-6 bg-gradient-to-b from-[#A78BFA]/10 to-background relative overflow-hidden">
           {/* Abstract shapes */}
           <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute top-20 -left-20 w-80 h-80 bg-[#9B8BB4]/10 rounded-full blur-3xl" />
+            <div className="absolute top-20 -left-20 w-80 h-80 bg-[#A78BFA]/10 rounded-full blur-3xl" />
             <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#FF6B35]/5 rounded-full blur-3xl" />
           </div>
 
           <div className="max-w-7xl mx-auto relative">
             <div className="max-w-4xl">
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#9B8BB4]/10 border border-[#9B8BB4]/20 mb-8">
-                <span className="w-2 h-2 rounded-full bg-[#9B8BB4] animate-pulse" />
-                <span className="text-sm text-[#9B8BB4] font-medium">
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#A78BFA]/10 border border-[#A78BFA]/20 mb-8">
+                <span className="w-2 h-2 rounded-full bg-[#A78BFA] animate-pulse" />
+                <span className="text-sm text-[#A78BFA] font-medium">
                   Training & Equipping Ministry
                 </span>
               </span>
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-primary mb-6">
-                Equip Your Team for <span className="text-[#9B8BB4]">Kingdom Impact</span>
+                Equip Your Team for <span className="text-[#A78BFA]">Kingdom Impact</span>
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed">
                 Practical, biblical training programs designed to equip volunteers and leaders
@@ -129,7 +129,7 @@ export default function TrainingPage() {
               <div className="mt-10 flex flex-wrap gap-4">
                 <a
                   href="#upcoming"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-[#9B8BB4] text-white font-semibold rounded-full hover:bg-[#9B8BB4]/90 transition-colors"
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-[#A78BFA] text-white font-semibold rounded-full hover:bg-[#A78BFA]/90 transition-colors"
                 >
                   View Upcoming Events
                 </a>
@@ -301,7 +301,7 @@ export default function TrainingPage() {
                       </p>
                     </div>
                     <div className="text-right">
-                      <div className="text-2xl font-bold text-[#9B8BB4]">{training.attendees}</div>
+                      <div className="text-2xl font-bold text-[#A78BFA]">{training.attendees}</div>
                       <div className="text-xs text-muted-foreground">Attendees</div>
                     </div>
                   </div>
@@ -322,7 +322,7 @@ export default function TrainingPage() {
         </section>
 
         {/* CTA */}
-        <section className="py-16 lg:py-24 bg-[#9B8BB4]">
+        <section className="py-16 lg:py-24 bg-[#A78BFA]">
           <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-4">
               Bring Training to Your Church
@@ -332,7 +332,7 @@ export default function TrainingPage() {
             </p>
             <Link
               href="/#contact"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-[#9B8BB4] font-semibold rounded-full hover:bg-white/90 transition-colors"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-[#A78BFA] font-semibold rounded-full hover:bg-white/90 transition-colors"
             >
               Request Training
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

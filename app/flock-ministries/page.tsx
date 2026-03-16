@@ -220,21 +220,21 @@ export default function FlockMinistriesPage() {
       <Header />
       <main>
         {/* Hero Section */}
-        <section className="pt-32 lg:pt-40 pb-20 px-6 bg-gradient-to-b from-[#5ABCB9]/5 to-background relative overflow-hidden">
+        <section className="pt-32 lg:pt-40 pb-20 px-6 bg-gradient-to-b from-[#00C9B7]/5 to-background relative overflow-hidden">
           {/* Background decoration */}
           <div className="absolute inset-0">
-            <div className="absolute top-20 -right-20 w-96 h-96 bg-[#5ABCB9]/10 rounded-full blur-3xl" />
+            <div className="absolute top-20 -right-20 w-96 h-96 bg-[#00C9B7]/10 rounded-full blur-3xl" />
             <div className="absolute bottom-0 -left-20 w-80 h-80 bg-[#FF6B35]/5 rounded-full blur-3xl" />
           </div>
 
           <div className="max-w-7xl mx-auto relative">
             <div className="text-center max-w-4xl mx-auto">
               {/* Free badge */}
-              <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#8DC63F]/10 border border-[#8DC63F]/20 mb-8">
-                <svg className="w-5 h-5 text-[#8DC63F]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#7ED321]/15 border border-[#7ED321]/25 mb-8">
+                <svg className="w-5 h-5 text-[#7ED321]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
                 </svg>
-                <span className="text-sm font-semibold text-[#8DC63F]">
+                <span className="text-sm font-semibold text-[#7ED321]">
                   All songs and content are FREE - the Gospel is free!
                 </span>
               </div>
@@ -257,7 +257,7 @@ export default function FlockMinistriesPage() {
               <div>
                 <div
                   className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold text-white mb-6"
-                  style={{ backgroundColor: "#5ABCB9" }}
+                  style={{ backgroundColor: "#00C9B7" }}
                 >
                   For Kids, Parents & Pastors
                 </div>
@@ -273,7 +273,7 @@ export default function FlockMinistriesPage() {
                 <div className="grid sm:grid-cols-2 gap-6">
                   {ministriesFeatures.map((feature) => (
                     <div key={feature.title} className="flex items-start gap-4">
-                      <div className="w-12 h-12 rounded-xl bg-[#5ABCB9]/10 flex items-center justify-center flex-shrink-0 text-[#5ABCB9]">
+                      <div className="w-12 h-12 rounded-xl bg-[#00C9B7]/10 flex items-center justify-center flex-shrink-0 text-[#00C9B7]">
                         {feature.icon}
                       </div>
                       <div>
@@ -292,7 +292,7 @@ export default function FlockMinistriesPage() {
               {/* Phone Mockup */}
               <div className="flex justify-center">
                 <div className="w-64 sm:w-72 lg:w-80">
-                  <PhoneMockup app="ministries" color="#5ABCB9" />
+                  <PhoneMockup app="ministries" color="#00C9B7" />
                 </div>
               </div>
             </div>
@@ -352,7 +352,7 @@ export default function FlockMinistriesPage() {
         <section className="py-20 lg:py-28 bg-secondary">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-12">
-              <span className="text-sm font-semibold text-[#9B8BB4] uppercase tracking-wider">
+              <span className="text-sm font-semibold text-[#A78BFA] uppercase tracking-wider">
                 Ministry in Action
               </span>
               <h2 className="mt-4 text-3xl sm:text-4xl font-bold tracking-tight text-primary">
@@ -371,7 +371,7 @@ export default function FlockMinistriesPage() {
                   className="aspect-square rounded-2xl overflow-hidden bg-muted relative group"
                 >
                   {/* Placeholder */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#5ABCB9]/20 to-[#FF6B35]/20 flex items-center justify-center">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#00C9B7]/20 to-[#FF6B35]/20 flex items-center justify-center">
                     <div className="text-center p-4">
                       <div className="w-12 h-12 mx-auto mb-2 rounded-full bg-white/20 flex items-center justify-center">
                         <svg className="w-6 h-6 text-white/60" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>

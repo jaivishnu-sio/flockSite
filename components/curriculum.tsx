@@ -6,7 +6,7 @@ const curriculumTypes = [
     subtitle: "Vacation Bible School",
     description:
       "Complete 5-day VBS programs with themes, lessons, activities, and everything you need for a memorable week of ministry.",
-    color: "#5ABCB9",
+    color: "#00C9B7",
     items: ["Teacher Guides", "Student Workbooks", "Activity Sheets", "Craft Templates"],
     featured: "Kingdom Quest VBS 2026",
   },
@@ -15,7 +15,7 @@ const curriculumTypes = [
     subtitle: "Year-Round Discipleship",
     description:
       "52-week curriculum designed to systematically teach children the Bible, building strong foundations in faith.",
-    color: "#8DC63F",
+    color: "#7ED321",
     items: ["Lesson Plans", "Bible Story Books", "Memory Verse Cards", "Take-Home Materials"],
     featured: "Foundations of Faith Series",
   },

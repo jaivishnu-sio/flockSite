@@ -16,7 +16,7 @@ const vbsCurriculum = [
     ageGroup: "Ages 4-12",
     duration: "5 Days",
     includes: ["5 Daily Lessons", "Activity Guides", "Craft Templates", "Music & Videos"],
-    color: "#5ABCB9",
+    color: "#00C9B7",
   },
   {
     title: "Ocean Deep VBS 2025",
@@ -24,7 +24,7 @@ const vbsCurriculum = [
     ageGroup: "Ages 4-12",
     duration: "5 Days",
     includes: ["5 Daily Lessons", "Activity Guides", "Craft Templates", "Music & Videos"],
-    color: "#5ABCB9",
+    color: "#00C9B7",
   },
   {
     title: "Space Explorers VBS 2024",
@@ -32,7 +32,7 @@ const vbsCurriculum = [
     ageGroup: "Ages 4-12",
     duration: "5 Days",
     includes: ["5 Daily Lessons", "Activity Guides", "Craft Templates", "Music & Videos"],
-    color: "#5ABCB9",
+    color: "#00C9B7",
   },
 ];
 
@@ -43,7 +43,7 @@ const sundaySchoolCurriculum = [
     ageGroup: "Ages 6-8",
     duration: "52 Weeks",
     includes: ["Weekly Lessons", "Student Workbooks", "Memory Verses", "Parent Guides"],
-    color: "#8DC63F",
+    color: "#7ED321",
   },
   {
     title: "Foundations of Faith - Year 2",
@@ -51,7 +51,7 @@ const sundaySchoolCurriculum = [
     ageGroup: "Ages 8-10",
     duration: "52 Weeks",
     includes: ["Weekly Lessons", "Student Workbooks", "Memory Verses", "Parent Guides"],
-    color: "#8DC63F",
+    color: "#7ED321",
   },
   {
     title: "Little Lambs Curriculum",
@@ -59,7 +59,7 @@ const sundaySchoolCurriculum = [
     ageGroup: "Ages 3-5",
     duration: "52 Weeks",
     includes: ["Picture Lessons", "Coloring Pages", "Simple Activities", "Songs"],
-    color: "#8DC63F",
+    color: "#7ED321",
   },
 ];
 
@@ -170,7 +170,7 @@ export default function CurriculumPage() {
               <div>
                 <span
                   className="inline-block px-3 py-1 rounded-full text-xs font-semibold text-white mb-4"
-                  style={{ backgroundColor: "#5ABCB9" }}
+                  style={{ backgroundColor: "#00C9B7" }}
                 >
                   Vacation Bible School
                 </span>
@@ -183,7 +183,7 @@ export default function CurriculumPage() {
               </div>
               <Link
                 href="#contact"
-                className="inline-flex items-center gap-2 text-[#5ABCB9] font-semibold hover:underline"
+                className="inline-flex items-center gap-2 text-[#00C9B7] font-semibold hover:underline"
               >
                 Order Full Curriculum
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -207,7 +207,7 @@ export default function CurriculumPage() {
               <div>
                 <span
                   className="inline-block px-3 py-1 rounded-full text-xs font-semibold text-white mb-4"
-                  style={{ backgroundColor: "#8DC63F" }}
+                  style={{ backgroundColor: "#7ED321" }}
                 >
                   Year-Round Discipleship
                 </span>
@@ -220,7 +220,7 @@ export default function CurriculumPage() {
               </div>
               <Link
                 href="#contact"
-                className="inline-flex items-center gap-2 text-[#8DC63F] font-semibold hover:underline"
+                className="inline-flex items-center gap-2 text-[#7ED321] font-semibold hover:underline"
               >
                 Order Full Curriculum
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

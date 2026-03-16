@@ -1,115 +1,87 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 
-// Abstract shapes configuration
-const shapes = [
-  { size: 80, color: "#5ABCB9", opacity: 0.15, speed: 0.5, startX: 10, startY: 20 },
-  { size: 120, color: "#8DC63F", opacity: 0.12, speed: 0.3, startX: 80, startY: 60 },
-  { size: 60, color: "#F28B82", opacity: 0.18, speed: 0.7, startX: 70, startY: 15 },
-  { size: 100, color: "#FF6B35", opacity: 0.1, speed: 0.4, startX: 20, startY: 70 },
-  { size: 90, color: "#FFD93D", opacity: 0.14, speed: 0.6, startX: 50, startY: 40 },
-  { size: 70, color: "#9B8BB4", opacity: 0.12, speed: 0.45, startX: 85, startY: 80 },
-];
-
-function HeroBackground() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animationRef = useRef<number>(0);
-  const timeRef = useRef(0);
+export function Hero() {
+  const [activePhase, setActivePhase] = useState<"catching" | "nurturing">("catching");
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    const resizeCanvas = () => {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-    };
-
-    const drawShape = (
-      x: number,
-      y: number,
-      size: number,
-      color: string,
-      opacity: number,
-      rotation: number
-    ) => {
-      ctx.save();
-      ctx.translate(x, y);
-      ctx.rotate(rotation);
-      ctx.globalAlpha = opacity;
-
-      // Draw soft blob shape
-      ctx.beginPath();
-      const points = 6;
-      for (let i = 0; i <= points; i++) {
-        const angle = (i / points) * Math.PI * 2;
-        const wobble = Math.sin(angle * 3 + rotation * 2) * (size * 0.15);
-        const r = size / 2 + wobble;
-        const px = Math.cos(angle) * r;
-        const py = Math.sin(angle) * r;
-        if (i === 0) {
-          ctx.moveTo(px, py);
-        } else {
-          ctx.lineTo(px, py);
-        }
-      }
-      ctx.closePath();
-
-      // Gradient fill
-      const gradient = ctx.createRadialGradient(0, 0, 0, 0, 0, size / 2);
-      gradient.addColorStop(0, color);
-      gradient.addColorStop(1, `${color}00`);
-      ctx.fillStyle = gradient;
-      ctx.fill();
-
-      ctx.restore();
-    };
-
-    const animate = () => {
-      if (!ctx || !canvas) return;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      timeRef.current += 0.008;
-
-      shapes.forEach((shape, i) => {
-        const x = (shape.startX / 100) * canvas.width + Math.sin(timeRef.current * shape.speed + i) * 30;
-        const y = (shape.startY / 100) * canvas.height + Math.cos(timeRef.current * shape.speed + i * 0.5) * 25;
-        const rotation = timeRef.current * shape.speed * 0.5;
-
-        drawShape(x, y, shape.size, shape.color, shape.opacity, rotation);
-      });
-
-      animationRef.current = requestAnimationFrame(animate);
-    };
-
-    resizeCanvas();
-    animate();
-
-    window.addEventListener("resize", resizeCanvas);
-    return () => {
-      window.removeEventListener("resize", resizeCanvas);
-      cancelAnimationFrame(animationRef.current);
-    };
+    const interval = setInterval(() => {
+      setActivePhase((prev) => (prev === "catching" ? "nurturing" : "catching"));
+    }, 3000);
+    return () => clearInterval(interval);
   }, []);
 
   return (
-    <canvas
-      ref={canvasRef}
-      className="absolute inset-0 w-full h-full pointer-events-none"
-      aria-hidden="true"
-    />
-  );
-}
-
-export function Hero() {
-  return (
     <section className="min-h-[90vh] flex items-center justify-center pt-32 lg:pt-36 pb-16 px-6 bg-background relative overflow-hidden">
-      <HeroBackground />
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        {/* VBS / Catching elements - teal themed */}
+        <div 
+          className={`
+            absolute -top-20 -left-20 w-80 h-80 rounded-full blur-3xl
+            transition-all duration-1000 ease-in-out
+            ${activePhase === "catching" ? "opacity-40 scale-110" : "opacity-10 scale-100"}
+          `}
+          style={{ backgroundColor: "#00C9B7" }}
+        />
+        <div 
+          className={`
+            absolute top-1/4 right-10 w-40 h-40 rounded-full blur-2xl
+            transition-all duration-1000 ease-in-out delay-200
+            ${activePhase === "catching" ? "opacity-50 scale-110" : "opacity-10 scale-90"}
+          `}
+          style={{ backgroundColor: "#00C9B7" }}
+        />
+        
+        {/* Sunday School / Nurturing elements - green themed */}
+        <div 
+          className={`
+            absolute -bottom-20 -right-20 w-96 h-96 rounded-full blur-3xl
+            transition-all duration-1000 ease-in-out
+            ${activePhase === "nurturing" ? "opacity-40 scale-110" : "opacity-10 scale-100"}
+          `}
+          style={{ backgroundColor: "#7ED321" }}
+        />
+        <div 
+          className={`
+            absolute bottom-1/4 left-10 w-48 h-48 rounded-full blur-2xl
+            transition-all duration-1000 ease-in-out delay-200
+            ${activePhase === "nurturing" ? "opacity-50 scale-110" : "opacity-10 scale-90"}
+          `}
+          style={{ backgroundColor: "#7ED321" }}
+        />
+
+        {/* Floating icons that move with the phase */}
+        <div 
+          className={`
+            absolute top-32 left-1/4 text-4xl
+            transition-all duration-700 ease-out
+            ${activePhase === "catching" ? "opacity-60 translate-y-0" : "opacity-0 -translate-y-10"}
+          `}
+        >
+          <div className="w-12 h-12 rounded-xl bg-[#00C9B7]/20 flex items-center justify-center">
+            <svg className="w-6 h-6 text-[#00C9B7]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="m9 9 10.5-3m0 6.553v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 1 1-.99-3.467l2.31-.66a2.25 2.25 0 0 0 1.632-2.163Zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 0 1-.99-3.467l2.31-.66A2.25 2.25 0 0 0 9 15.553Z" />
+            </svg>
+          </div>
+        </div>
+        <div 
+          className={`
+            absolute bottom-40 right-1/4 text-4xl
+            transition-all duration-700 ease-out
+            ${activePhase === "nurturing" ? "opacity-60 translate-y-0" : "opacity-0 translate-y-10"}
+          `}
+        >
+          <div className="w-12 h-12 rounded-xl bg-[#7ED321]/20 flex items-center justify-center">
+            <svg className="w-6 h-6 text-[#7ED321]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+            </svg>
+          </div>
+        </div>
+      </div>
+
       <div className="max-w-6xl mx-auto text-center relative z-10">
         {/* Badge */}
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-card mb-10">
@@ -119,11 +91,60 @@ export function Hero() {
           </span>
         </div>
 
-        {/* Main Headline */}
-        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[0.9] mb-8 text-primary text-balance">
-          <span className="block">Catching at VBS.</span>
-          <span className="block text-muted-foreground">Nurturing at Sunday School.</span>
+        {/* Main Headline with animated emphasis */}
+        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[0.9] mb-8 text-primary">
+          <span 
+            className={`
+              block transition-all duration-500 ease-out
+              ${activePhase === "catching" ? "scale-105 text-primary" : "scale-100 text-muted-foreground"}
+            `}
+          >
+            <span className={`transition-colors duration-500 ${activePhase === "catching" ? "text-[#00C9B7]" : ""}`}>
+              Catching
+            </span>{" "}
+            at VBS.
+          </span>
+          <span 
+            className={`
+              block transition-all duration-500 ease-out
+              ${activePhase === "nurturing" ? "scale-105 text-primary" : "scale-100 text-muted-foreground"}
+            `}
+          >
+            <span className={`transition-colors duration-500 ${activePhase === "nurturing" ? "text-[#7ED321]" : ""}`}>
+              Nurturing
+            </span>{" "}
+            at Sunday School.
+          </span>
         </h1>
+
+        {/* Phase indicator */}
+        <div className="flex items-center justify-center gap-3 mb-8">
+          <button
+            onClick={() => setActivePhase("catching")}
+            className={`
+              flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300
+              ${activePhase === "catching" 
+                ? "bg-[#00C9B7] text-white scale-105" 
+                : "bg-muted text-muted-foreground hover:bg-muted/80"}
+            `}
+          >
+            <span className={`w-2 h-2 rounded-full ${activePhase === "catching" ? "bg-white" : "bg-[#00C9B7]"}`} />
+            VBS
+          </button>
+          <div className="w-8 h-0.5 bg-border rounded" />
+          <button
+            onClick={() => setActivePhase("nurturing")}
+            className={`
+              flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300
+              ${activePhase === "nurturing" 
+                ? "bg-[#7ED321] text-white scale-105" 
+                : "bg-muted text-muted-foreground hover:bg-muted/80"}
+            `}
+          >
+            <span className={`w-2 h-2 rounded-full ${activePhase === "nurturing" ? "bg-white" : "bg-[#7ED321]"}`} />
+            Sunday School
+          </button>
+        </div>
 
         {/* Subheadline */}
         <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed text-pretty">
@@ -131,32 +152,25 @@ export function Hero() {
           programs and nurture them through structured Sunday School discipleship.
         </p>
 
-        {/* CTA Buttons */}
+        {/* CTA Buttons - emphasizing the key actions */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link
-            href="#contact"
-            className="px-8 py-4 bg-[#FF6B35] text-white font-semibold rounded-full hover:bg-[#FF6B35]/90 transition-colors text-base shadow-lg shadow-[#FF6B35]/25"
+            href="/curriculum"
+            className="px-8 py-4 bg-[#00C9B7] text-white font-semibold rounded-full hover:bg-[#00C9B7]/90 transition-colors text-base shadow-lg shadow-[#00C9B7]/25 flex items-center gap-2"
           >
-            Get Started
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+            </svg>
+            Get VBS / Sunday School Materials
           </Link>
           <Link
-            href="#approach"
-            className="px-8 py-4 border border-primary text-primary font-medium rounded-full hover:bg-primary hover:text-primary-foreground transition-colors flex items-center gap-2 text-base"
+            href="/partner"
+            className="px-8 py-4 bg-[#FF6B35] text-white font-semibold rounded-full hover:bg-[#FF6B35]/90 transition-colors text-base shadow-lg shadow-[#FF6B35]/25 flex items-center gap-2"
           >
-            Learn More
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              />
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
             </svg>
+            Become a Partner
           </Link>
         </div>
       </div>

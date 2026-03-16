@@ -14,7 +14,7 @@ const steps = [
       "Simple gospel presentations",
       "Engaging group activities",
     ],
-    color: "#5ABCB9",
+    color: "#00C9B7",
     images: [
       "/images/vbs-1.jpg",
       "/images/vbs-2.jpg",
@@ -33,7 +33,7 @@ const steps = [
       "Bible memory programs",
       "Teacher training resources",
     ],
-    color: "#8DC63F",
+    color: "#7ED321",
     images: [
       "/images/ss-1.jpg",
       "/images/ss-2.jpg",
@@ -52,7 +52,7 @@ const steps = [
       "Weekly devotionals",
       "Family discussion guides",
     ],
-    color: "#F28B82",
+    color: "#FF7B6F",
     images: [
       "/images/connected-1.jpg",
       "/images/connected-2.jpg",
@@ -77,32 +77,32 @@ function ImageCarousel({ images, color }: { images: string[]; color: string }) {
   }, [images.length]);
 
   return (
-    <div className="relative aspect-[4/3] rounded-3xl overflow-hidden bg-muted">
+    <div className="relative aspect-[4/3] rounded-2xl lg:rounded-3xl overflow-hidden bg-muted">
       {/* Placeholder backgrounds until real images are added */}
       <div
         className="absolute inset-0 flex items-center justify-center"
         style={{ backgroundColor: `${color}15` }}
       >
-        <div className="text-center p-8">
+        <div className="text-center p-4 lg:p-8">
           <div
-            className="text-6xl font-bold mb-2"
+            className="text-4xl lg:text-6xl font-bold mb-2"
             style={{ color: `${color}40` }}
           >
             {currentIndex + 1}/{images.length}
           </div>
-          <p className="text-sm text-muted-foreground">Add images to {images[0]}</p>
+          <p className="text-xs lg:text-sm text-muted-foreground">Add images to {images[0]}</p>
         </div>
       </div>
       
       {/* Carousel indicators */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+      <div className="absolute bottom-3 lg:bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 lg:gap-2">
         {images.map((_, idx) => (
           <button
             key={idx}
             onClick={() => setCurrentIndex(idx)}
-            className={`w-2 h-2 rounded-full transition-all ${
+            className={`w-1.5 h-1.5 lg:w-2 lg:h-2 rounded-full transition-all ${
               idx === currentIndex
-                ? "w-6"
+                ? "w-4 lg:w-6"
                 : "bg-white/50"
             }`}
             style={{
@@ -118,58 +118,58 @@ function ImageCarousel({ images, color }: { images: string[]; color: string }) {
 
 export function Approach() {
   return (
-    <section id="approach" className="py-24 lg:py-32 bg-secondary">
+    <section id="approach" className="py-20 lg:py-32 bg-secondary">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
-        <div className="max-w-3xl mb-20">
-          <span className="text-sm font-semibold text-[#5ABCB9] uppercase tracking-wider">
+        <div className="max-w-3xl mb-12 lg:mb-20">
+          <span className="text-sm font-semibold text-[#00C9B7] uppercase tracking-wider">
             Our Approach
           </span>
-          <h2 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-primary">
+          <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-primary">
             The Flock Ministry Journey
           </h2>
-          <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+          <p className="mt-4 lg:mt-6 text-base lg:text-lg text-muted-foreground leading-relaxed">
             A comprehensive approach to children&apos;s ministry that catches,
             nurtures, and keeps children connected to their faith.
           </p>
         </div>
 
-        {/* Steps - Card layout on all screens */}
-        <div className="space-y-8 lg:space-y-16">
+        {/* Steps - Compact layout on mobile */}
+        <div className="space-y-6 lg:space-y-16">
           {steps.map((step, index) => (
             <div
               key={step.number}
               className={`flex flex-col ${
                 index % 2 === 1 ? "lg:flex-row-reverse" : "lg:flex-row"
-              } gap-8 lg:gap-12 items-stretch`}
+              } gap-4 lg:gap-12 items-stretch`}
             >
               {/* Content Card */}
               <div className="flex-1">
-                <div className="h-full p-6 lg:p-8 rounded-3xl border border-border bg-card">
+                <div className="h-full p-5 lg:p-8 rounded-2xl lg:rounded-3xl border border-border bg-card">
                   {/* Header */}
-                  <div className="flex items-center gap-4 mb-5">
+                  <div className="flex items-center gap-3 lg:gap-4 mb-4 lg:mb-5">
                     <span
-                      className="text-4xl lg:text-5xl font-bold"
+                      className="text-3xl lg:text-5xl font-bold"
                       style={{ color: step.color }}
                     >
                       {step.number}
                     </span>
-                    <h3 className="text-2xl lg:text-3xl font-bold text-primary">
+                    <h3 className="text-xl lg:text-3xl font-bold text-primary">
                       {step.title}
                     </h3>
                   </div>
 
                   {/* Description */}
-                  <p className="text-muted-foreground leading-relaxed mb-6">
+                  <p className="text-sm lg:text-base text-muted-foreground leading-relaxed mb-4 lg:mb-6">
                     {step.description}
                   </p>
 
-                  {/* Features as pills - same on mobile and desktop */}
-                  <div className="flex flex-wrap gap-2">
+                  {/* Features as pills */}
+                  <div className="flex flex-wrap gap-1.5 lg:gap-2">
                     {step.features.map((feature) => (
                       <span
                         key={feature}
-                        className="px-4 py-2 text-sm font-medium rounded-full transition-colors"
+                        className="px-3 lg:px-4 py-1.5 lg:py-2 text-xs lg:text-sm font-medium rounded-full transition-colors"
                         style={{
                           backgroundColor: `${step.color}15`,
                           color: step.color,
@@ -182,8 +182,8 @@ export function Approach() {
                 </div>
               </div>
 
-              {/* Image Carousel */}
-              <div className="flex-1">
+              {/* Image Carousel - Smaller on mobile */}
+              <div className="flex-1 max-h-48 lg:max-h-none">
                 <ImageCarousel images={step.images} color={step.color} />
               </div>
             </div>
