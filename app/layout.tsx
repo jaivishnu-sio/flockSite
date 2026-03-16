@@ -40,9 +40,8 @@ export default function RootLayout({
       <body className={`${lexend.variable} font-sans antialiased`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
+          defaultTheme="system"
           enableSystem
-          disableTransitionOnChange
         >
           <AnimatedBackground />
           <div className="relative z-10">

@@ -38,9 +38,9 @@ const announcements: Announcement[] = [
 ];
 
 const typeColors = {
-  event: "bg-[#5ABCB9]",
-  update: "bg-[#8DC63F]",
-  news: "bg-[#F28B82]",
+  event: "bg-[#00C9B7]",
+  update: "bg-[#7ED321]",
+  news: "bg-[#FF7B6F]",
 };
 
 const typeLabels = {
@@ -63,13 +63,13 @@ export function Announcements() {
   const current = announcements[currentIndex];
 
   return (
-    <section className="py-6 px-6 bg-primary relative z-40 mt-16 lg:mt-20">
+    <section className="py-4 px-6 bg-secondary/50 relative z-40">
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center justify-between gap-4">
           {/* Navigation Arrow - Left */}
           <button
             onClick={prevAnnouncement}
-            className="p-2 text-primary-foreground/70 hover:text-primary-foreground transition-colors shrink-0"
+            className="p-2 text-muted-foreground hover:text-primary transition-colors shrink-0"
             aria-label="Previous announcement"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -83,17 +83,17 @@ export function Announcements() {
               {typeLabels[current.type]}
             </span>
             <div className="flex items-center gap-3 min-w-0">
-              <span className="font-semibold text-primary-foreground truncate">
+              <span className="font-semibold text-primary truncate text-sm">
                 {current.title}
               </span>
-              <span className="hidden md:inline text-primary-foreground/70 truncate">
+              <span className="hidden md:inline text-muted-foreground truncate text-sm">
                 {current.description}
               </span>
             </div>
             {current.link && (
               <a
                 href={current.link}
-                className="text-primary-foreground underline underline-offset-2 text-sm font-medium hover:text-primary-foreground/80 transition-colors shrink-0"
+                className="text-[#00C9B7] underline underline-offset-2 text-sm font-medium hover:text-[#00C9B7]/80 transition-colors shrink-0"
               >
                 Learn more
               </a>
@@ -103,7 +103,7 @@ export function Announcements() {
           {/* Navigation Arrow - Right */}
           <button
             onClick={nextAnnouncement}
-            className="p-2 text-primary-foreground/70 hover:text-primary-foreground transition-colors shrink-0"
+            className="p-2 text-muted-foreground hover:text-primary transition-colors shrink-0"
             aria-label="Next announcement"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -113,13 +113,13 @@ export function Announcements() {
         </div>
 
         {/* Dots indicator */}
-        <div className="flex justify-center gap-2 mt-3">
+        <div className="flex justify-center gap-2 mt-2">
           {announcements.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentIndex(index)}
-              className={`w-2 h-2 rounded-full transition-colors ${
-                index === currentIndex ? "bg-primary-foreground" : "bg-primary-foreground/30"
+              className={`w-1.5 h-1.5 rounded-full transition-colors ${
+                index === currentIndex ? "bg-[#00C9B7]" : "bg-muted-foreground/30"
               }`}
               aria-label={`Go to announcement ${index + 1}`}
             />

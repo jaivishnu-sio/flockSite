@@ -85,8 +85,8 @@ function BackgroundCarousel({ color }: { color: string }) {
           />
         </div>
       ))}
-      {/* 75% opacity overlay */}
-      <div className="absolute inset-0 bg-background/[0.75]" />
+      {/* 75% opacity black overlay for better image visibility */}
+      <div className="absolute inset-0 bg-black/75" />
       
       {/* Subtle color tint */}
       <div 
@@ -153,13 +153,13 @@ export function Approach() {
                     >
                       {step.number}
                     </span>
-                    <h3 className="text-2xl lg:text-4xl font-bold text-primary">
+                    <h3 className="text-2xl lg:text-4xl font-bold text-white">
                       {step.title}
                     </h3>
                   </div>
 
                   {/* Description */}
-                  <p className="text-sm lg:text-base text-muted-foreground leading-relaxed mb-5 lg:mb-6">
+                  <p className="text-sm lg:text-base text-white/80 leading-relaxed mb-5 lg:mb-6">
                     {step.description}
                   </p>
 
