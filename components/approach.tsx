@@ -62,7 +62,7 @@ const steps = [
   },
 ];
 
-function ImageCarousel({ images, color }: { images: string[]; color: string }) {
+function BackgroundCarousel({ images, color }: { images: string[]; color: string }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -77,33 +77,35 @@ function ImageCarousel({ images, color }: { images: string[]; color: string }) {
   }, [images.length]);
 
   return (
-    <div className="relative aspect-[4/3] rounded-2xl lg:rounded-3xl overflow-hidden bg-muted">
-      {/* Placeholder backgrounds until real images are added */}
-      <div
-        className="absolute inset-0 flex items-center justify-center"
-        style={{ backgroundColor: `${color}15` }}
-      >
-        <div className="text-center p-4 lg:p-8">
+    <>
+      {/* Background images */}
+      {images.map((_, idx) => (
+        <div
+          key={idx}
+          className={`absolute inset-0 transition-opacity duration-1000 ${
+            idx === currentIndex ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          {/* Placeholder background until real images */}
           <div
-            className="text-4xl lg:text-6xl font-bold mb-2"
-            style={{ color: `${color}40` }}
-          >
-            {currentIndex + 1}/{images.length}
-          </div>
-          <p className="text-xs lg:text-sm text-muted-foreground">Add images to {images[0]}</p>
+            className="absolute inset-0"
+            style={{
+              background: `linear-gradient(135deg, ${color}30 0%, ${color}15 50%, ${color}25 100%)`,
+            }}
+          />
         </div>
-      </div>
+      ))}
+      {/* 75% opacity overlay */}
+      <div className="absolute inset-0 bg-background/[0.75]" />
       
       {/* Carousel indicators */}
-      <div className="absolute bottom-3 lg:bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 lg:gap-2">
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
         {images.map((_, idx) => (
           <button
             key={idx}
             onClick={() => setCurrentIndex(idx)}
-            className={`w-1.5 h-1.5 lg:w-2 lg:h-2 rounded-full transition-all ${
-              idx === currentIndex
-                ? "w-4 lg:w-6"
-                : "bg-white/50"
+            className={`w-2 h-2 rounded-full transition-all ${
+              idx === currentIndex ? "w-6" : "bg-white/50"
             }`}
             style={{
               backgroundColor: idx === currentIndex ? color : undefined,
@@ -112,7 +114,7 @@ function ImageCarousel({ images, color }: { images: string[]; color: string }) {
           />
         ))}
       </div>
-    </div>
+    </>
   );
 }
 
@@ -134,44 +136,46 @@ export function Approach() {
           </p>
         </div>
 
-        {/* Steps - Compact layout on mobile */}
-        <div className="space-y-6 lg:space-y-16">
-          {steps.map((step, index) => (
+        {/* Steps - Unified card design with background images */}
+        <div className="space-y-6 lg:space-y-8">
+          {steps.map((step) => (
             <div
               key={step.number}
-              className={`flex flex-col ${
-                index % 2 === 1 ? "lg:flex-row-reverse" : "lg:flex-row"
-              } gap-4 lg:gap-12 items-stretch`}
+              className="relative rounded-2xl lg:rounded-3xl overflow-hidden border border-border min-h-[280px] lg:min-h-[320px]"
             >
-              {/* Content Card */}
-              <div className="flex-1">
-                <div className="h-full p-5 lg:p-8 rounded-2xl lg:rounded-3xl border border-border bg-card">
+              {/* Background carousel */}
+              <BackgroundCarousel images={step.images} color={step.color} />
+              
+              {/* Content overlay */}
+              <div className="relative z-10 p-6 lg:p-10 h-full flex flex-col justify-center">
+                <div className="max-w-2xl">
                   {/* Header */}
                   <div className="flex items-center gap-3 lg:gap-4 mb-4 lg:mb-5">
                     <span
-                      className="text-3xl lg:text-5xl font-bold"
+                      className="text-4xl lg:text-6xl font-bold"
                       style={{ color: step.color }}
                     >
                       {step.number}
                     </span>
-                    <h3 className="text-xl lg:text-3xl font-bold text-primary">
+                    <h3 className="text-2xl lg:text-4xl font-bold text-primary">
                       {step.title}
                     </h3>
                   </div>
 
                   {/* Description */}
-                  <p className="text-sm lg:text-base text-muted-foreground leading-relaxed mb-4 lg:mb-6">
+                  <p className="text-sm lg:text-base text-muted-foreground leading-relaxed mb-5 lg:mb-6">
                     {step.description}
                   </p>
 
                   {/* Features as pills */}
-                  <div className="flex flex-wrap gap-1.5 lg:gap-2">
+                  <div className="flex flex-wrap gap-2 lg:gap-3">
                     {step.features.map((feature) => (
                       <span
                         key={feature}
-                        className="px-3 lg:px-4 py-1.5 lg:py-2 text-xs lg:text-sm font-medium rounded-full transition-colors"
+                        className="px-3 lg:px-4 py-1.5 lg:py-2 text-xs lg:text-sm font-medium rounded-full backdrop-blur-sm border transition-colors"
                         style={{
-                          backgroundColor: `${step.color}15`,
+                          backgroundColor: `${step.color}20`,
+                          borderColor: `${step.color}40`,
                           color: step.color,
                         }}
                       >
@@ -180,11 +184,6 @@ export function Approach() {
                     ))}
                   </div>
                 </div>
-              </div>
-
-              {/* Image Carousel - Smaller on mobile */}
-              <div className="flex-1 max-h-48 lg:max-h-none">
-                <ImageCarousel images={step.images} color={step.color} />
               </div>
             </div>
           ))}

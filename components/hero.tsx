@@ -53,46 +53,116 @@ export function Hero() {
           style={{ backgroundColor: "#7ED321" }}
         />
 
+        {/* Additional floating elements */}
+        <div 
+          className={`
+            absolute top-20 right-1/4 w-24 h-24 rounded-full blur-xl
+            transition-all duration-700 ease-out
+            ${activePhase === "catching" ? "opacity-40 translate-x-4" : "opacity-20 -translate-x-4"}
+          `}
+          style={{ backgroundColor: "#00C9B7" }}
+        />
+        <div 
+          className={`
+            absolute bottom-32 left-1/4 w-32 h-32 rounded-full blur-xl
+            transition-all duration-700 ease-out
+            ${activePhase === "nurturing" ? "opacity-40 -translate-x-4" : "opacity-20 translate-x-4"}
+          `}
+          style={{ backgroundColor: "#7ED321" }}
+        />
+
         {/* Floating icons that move with the phase */}
         <div 
           className={`
-            absolute top-32 left-1/4 text-4xl
+            absolute top-32 left-[15%] text-4xl
             transition-all duration-700 ease-out
-            ${activePhase === "catching" ? "opacity-60 translate-y-0" : "opacity-0 -translate-y-10"}
+            ${activePhase === "catching" ? "opacity-70 translate-y-0 scale-100" : "opacity-0 -translate-y-10 scale-75"}
           `}
         >
-          <div className="w-12 h-12 rounded-xl bg-[#00C9B7]/20 flex items-center justify-center">
-            <svg className="w-6 h-6 text-[#00C9B7]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+          <div className="w-14 h-14 rounded-2xl bg-[#00C9B7]/20 flex items-center justify-center backdrop-blur-sm border border-[#00C9B7]/30">
+            <svg className="w-7 h-7 text-[#00C9B7]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="m9 9 10.5-3m0 6.553v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 1 1-.99-3.467l2.31-.66a2.25 2.25 0 0 0 1.632-2.163Zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 0 1-.99-3.467l2.31-.66A2.25 2.25 0 0 0 9 15.553Z" />
             </svg>
           </div>
         </div>
         <div 
           className={`
-            absolute bottom-40 right-1/4 text-4xl
-            transition-all duration-700 ease-out
-            ${activePhase === "nurturing" ? "opacity-60 translate-y-0" : "opacity-0 translate-y-10"}
+            absolute top-48 right-[12%] text-4xl
+            transition-all duration-700 ease-out delay-100
+            ${activePhase === "catching" ? "opacity-60 translate-y-0 rotate-0" : "opacity-0 translate-y-8 rotate-12"}
           `}
         >
-          <div className="w-12 h-12 rounded-xl bg-[#7ED321]/20 flex items-center justify-center">
-            <svg className="w-6 h-6 text-[#7ED321]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+          <div className="w-12 h-12 rounded-xl bg-[#00C9B7]/15 flex items-center justify-center backdrop-blur-sm border border-[#00C9B7]/20">
+            <svg className="w-6 h-6 text-[#00C9B7]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15.59 14.37a6 6 0 0 1-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 0 0 6.16-12.12A14.98 14.98 0 0 0 9.631 8.41m5.96 5.96a14.926 14.926 0 0 1-5.841 2.58m-.119-8.54a6 6 0 0 0-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 0 0-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 0 1-2.448-2.448 14.9 14.9 0 0 1 .06-.312m-2.24 2.39a4.493 4.493 0 0 0-1.757 4.306 4.493 4.493 0 0 0 4.306-1.758M16.5 9a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z" />
+            </svg>
+          </div>
+        </div>
+        <div 
+          className={`
+            absolute bottom-40 right-[20%] text-4xl
+            transition-all duration-700 ease-out
+            ${activePhase === "nurturing" ? "opacity-70 translate-y-0 scale-100" : "opacity-0 translate-y-10 scale-75"}
+          `}
+        >
+          <div className="w-14 h-14 rounded-2xl bg-[#7ED321]/20 flex items-center justify-center backdrop-blur-sm border border-[#7ED321]/30">
+            <svg className="w-7 h-7 text-[#7ED321]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
             </svg>
           </div>
         </div>
+        <div 
+          className={`
+            absolute bottom-28 left-[18%] text-4xl
+            transition-all duration-700 ease-out delay-100
+            ${activePhase === "nurturing" ? "opacity-60 translate-y-0 rotate-0" : "opacity-0 -translate-y-8 -rotate-12"}
+          `}
+        >
+          <div className="w-12 h-12 rounded-xl bg-[#7ED321]/15 flex items-center justify-center backdrop-blur-sm border border-[#7ED321]/20">
+            <svg className="w-6 h-6 text-[#7ED321]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
+            </svg>
+          </div>
+        </div>
+
+        {/* Additional decorative circles */}
+        <div 
+          className={`
+            absolute top-1/2 left-[8%] w-3 h-3 rounded-full
+            transition-all duration-500 ease-out
+            ${activePhase === "catching" ? "opacity-80 scale-100" : "opacity-30 scale-50"}
+          `}
+          style={{ backgroundColor: "#00C9B7" }}
+        />
+        <div 
+          className={`
+            absolute top-1/3 right-[8%] w-2 h-2 rounded-full
+            transition-all duration-500 ease-out delay-150
+            ${activePhase === "catching" ? "opacity-70 scale-100" : "opacity-20 scale-50"}
+          `}
+          style={{ backgroundColor: "#00C9B7" }}
+        />
+        <div 
+          className={`
+            absolute bottom-1/3 left-[5%] w-2 h-2 rounded-full
+            transition-all duration-500 ease-out
+            ${activePhase === "nurturing" ? "opacity-80 scale-100" : "opacity-30 scale-50"}
+          `}
+          style={{ backgroundColor: "#7ED321" }}
+        />
+        <div 
+          className={`
+            absolute bottom-1/2 right-[10%] w-3 h-3 rounded-full
+            transition-all duration-500 ease-out delay-150
+            ${activePhase === "nurturing" ? "opacity-70 scale-100" : "opacity-20 scale-50"}
+          `}
+          style={{ backgroundColor: "#7ED321" }}
+        />
       </div>
 
       <div className="max-w-6xl mx-auto text-center relative z-10">
-        {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-card mb-10">
-          <span className="w-2 h-2 rounded-full bg-[#FF6B35] animate-pulse" />
-          <span className="text-sm text-muted-foreground font-medium">
-            Building Strong Foundations for the Next Generation Starting from Kids
-          </span>
-        </div>
-
         {/* Main Headline with animated emphasis */}
-        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[0.9] mb-8 text-primary">
+        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[0.9] mb-12 text-primary">
           <span 
             className={`
               block transition-all duration-500 ease-out
@@ -117,42 +187,13 @@ export function Hero() {
           </span>
         </h1>
 
-        {/* Phase indicator */}
-        <div className="flex items-center justify-center gap-3 mb-8">
-          <button
-            onClick={() => setActivePhase("catching")}
-            className={`
-              flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300
-              ${activePhase === "catching" 
-                ? "bg-[#00C9B7] text-white scale-105" 
-                : "bg-muted text-muted-foreground hover:bg-muted/80"}
-            `}
-          >
-            <span className={`w-2 h-2 rounded-full ${activePhase === "catching" ? "bg-white" : "bg-[#00C9B7]"}`} />
-            VBS
-          </button>
-          <div className="w-8 h-0.5 bg-border rounded" />
-          <button
-            onClick={() => setActivePhase("nurturing")}
-            className={`
-              flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300
-              ${activePhase === "nurturing" 
-                ? "bg-[#7ED321] text-white scale-105" 
-                : "bg-muted text-muted-foreground hover:bg-muted/80"}
-            `}
-          >
-            <span className={`w-2 h-2 rounded-full ${activePhase === "nurturing" ? "bg-white" : "bg-[#7ED321]"}`} />
-            Sunday School
-          </button>
-        </div>
-
         {/* Subheadline */}
         <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed text-pretty">
           Complete ministry resources that help churches reach children through engaging VBS 
           programs and nurture them through structured Sunday School discipleship.
         </p>
 
-        {/* CTA Buttons - emphasizing the key actions */}
+        {/* CTA Buttons - Conversational, answering "How can I be part of this?" */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link
             href="/curriculum"
@@ -161,7 +202,7 @@ export function Hero() {
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
             </svg>
-            Get VBS / Sunday School Materials
+            Start My Ministry
           </Link>
           <Link
             href="/partner"
@@ -170,7 +211,7 @@ export function Hero() {
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
             </svg>
-            Become a Partner
+            Join the Mission
           </Link>
         </div>
       </div>

@@ -43,29 +43,45 @@ export function Training() {
 
   return (
     <section className="py-24 lg:py-32 relative overflow-hidden">
-      {/* Background images carousel */}
+      {/* Background images carousel with actual image support */}
       <div className="absolute inset-0">
-        {trainingImages.map((_, index) => (
+        {trainingImages.map((imagePath, index) => (
           <div
             key={index}
             className={`absolute inset-0 transition-opacity duration-1000 ${
               index === currentImageIndex ? "opacity-100" : "opacity-0"
             }`}
           >
-            {/* Placeholder for training images */}
+            {/* Placeholder gradient - will be replaced when images are added */}
             <div 
-              className="absolute inset-0"
+              className="absolute inset-0 bg-cover bg-center"
               style={{
-                background: `linear-gradient(135deg, rgba(155, 139, 180, 0.3) 0%, rgba(27, 58, 95, 0.4) 100%)`,
+                backgroundImage: `linear-gradient(135deg, rgba(167, 139, 250, 0.4) 0%, rgba(27, 58, 95, 0.5) 50%, rgba(126, 211, 33, 0.3) 100%)`,
               }}
             />
+            {/* This will show when actual images are added */}
+            {/* <img src={imagePath} alt="" className="absolute inset-0 w-full h-full object-cover" /> */}
           </div>
         ))}
-        {/* Dark overlay - 78% opacity for optimal visibility */}
-        <div className="absolute inset-0 bg-primary/[0.78]" />
+        {/* Dark overlay - 75% opacity */}
+        <div className="absolute inset-0 bg-primary/[0.75]" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative">
+      {/* Image indicators */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+        {trainingImages.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => setCurrentImageIndex(idx)}
+            className={`w-2 h-2 rounded-full transition-all ${
+              idx === currentImageIndex ? "w-6 bg-[#A78BFA]" : "bg-white/50"
+            }`}
+            aria-label={`Go to image ${idx + 1}`}
+          />
+        ))}
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Content */}
           <div>
