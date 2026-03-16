@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const trainingHighlights = [
@@ -25,10 +26,10 @@ const trainingHighlights = [
 ];
 
 const trainingImages = [
-  "/images/training-1.jpg",
-  "/images/training-2.jpg",
-  "/images/training-3.jpg",
-  "/images/training-4.jpg",
+  "/images/ministry-1.png",
+  "/images/ministry-2.png",
+  "/images/ministry-3.png",
+  "/images/ministry-4.png",
 ];
 
 export function Training() {
@@ -45,27 +46,42 @@ export function Training() {
     <section className="py-24 lg:py-32 relative overflow-hidden">
       {/* Background images carousel */}
       <div className="absolute inset-0">
-        {trainingImages.map((_, index) => (
+        {trainingImages.map((imagePath, index) => (
           <div
             key={index}
             className={`absolute inset-0 transition-opacity duration-1000 ${
               index === currentImageIndex ? "opacity-100" : "opacity-0"
             }`}
           >
-            {/* Placeholder for training images */}
-            <div 
-              className="absolute inset-0"
-              style={{
-                background: `linear-gradient(135deg, rgba(155, 139, 180, 0.3) 0%, rgba(27, 58, 95, 0.4) 100%)`,
-              }}
+            <Image
+              src={imagePath}
+              alt=""
+              fill
+              className="object-cover"
+              sizes="100vw"
+              priority={index === 0}
             />
           </div>
         ))}
-        {/* Dark overlay - 78% opacity for optimal visibility */}
-        <div className="absolute inset-0 bg-primary/[0.78]" />
+        {/* Dark overlay - 78% opacity */}
+        <div className="absolute inset-0 bg-[#0A0F1A]/[0.78]" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative">
+      {/* Image indicators */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+        {trainingImages.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => setCurrentImageIndex(idx)}
+            className={`w-2 h-2 rounded-full transition-all ${
+              idx === currentImageIndex ? "w-6 bg-[#A78BFA]" : "bg-white/50"
+            }`}
+            aria-label={`Go to image ${idx + 1}`}
+          />
+        ))}
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Content */}
           <div>

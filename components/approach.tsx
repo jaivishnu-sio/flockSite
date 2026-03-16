@@ -1,6 +1,14 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+
+const ministryImages = [
+  "/images/ministry-1.png",
+  "/images/ministry-2.png",
+  "/images/ministry-3.png",
+  "/images/ministry-4.png",
+];
 
 const steps = [
   {
@@ -15,12 +23,6 @@ const steps = [
       "Engaging group activities",
     ],
     color: "#00C9B7",
-    images: [
-      "/images/vbs-1.jpg",
-      "/images/vbs-2.jpg",
-      "/images/vbs-3.jpg",
-      "/images/vbs-4.jpg",
-    ],
   },
   {
     number: "02",
@@ -34,12 +36,6 @@ const steps = [
       "Teacher training resources",
     ],
     color: "#7ED321",
-    images: [
-      "/images/ss-1.jpg",
-      "/images/ss-2.jpg",
-      "/images/ss-3.jpg",
-      "/images/ss-4.jpg",
-    ],
   },
   {
     number: "03",
@@ -53,57 +49,59 @@ const steps = [
       "Family discussion guides",
     ],
     color: "#FF7B6F",
-    images: [
-      "/images/connected-1.jpg",
-      "/images/connected-2.jpg",
-      "/images/connected-3.jpg",
-      "/images/connected-4.jpg",
-    ],
   },
 ];
 
-function ImageCarousel({ images, color }: { images: string[]; color: string }) {
+function BackgroundCarousel({ color }: { color: string }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     intervalRef.current = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % images.length);
+      setCurrentIndex((prev) => (prev + 1) % ministryImages.length);
     }, 3000);
 
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
-  }, [images.length]);
+  }, []);
 
   return (
-    <div className="relative aspect-[4/3] rounded-2xl lg:rounded-3xl overflow-hidden bg-muted">
-      {/* Placeholder backgrounds until real images are added */}
-      <div
-        className="absolute inset-0 flex items-center justify-center"
-        style={{ backgroundColor: `${color}15` }}
-      >
-        <div className="text-center p-4 lg:p-8">
-          <div
-            className="text-4xl lg:text-6xl font-bold mb-2"
-            style={{ color: `${color}40` }}
-          >
-            {currentIndex + 1}/{images.length}
-          </div>
-          <p className="text-xs lg:text-sm text-muted-foreground">Add images to {images[0]}</p>
+    <>
+      {/* Background images */}
+      {ministryImages.map((src, idx) => (
+        <div
+          key={idx}
+          className={`absolute inset-0 transition-opacity duration-1000 ${
+            idx === currentIndex ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          <Image
+            src={src}
+            alt=""
+            fill
+            className="object-cover"
+            sizes="100vw"
+          />
         </div>
-      </div>
+      ))}
+      {/* 75% opacity overlay */}
+      <div className="absolute inset-0 bg-background/[0.75]" />
+      
+      {/* Subtle color tint */}
+      <div 
+        className="absolute inset-0 opacity-10"
+        style={{ backgroundColor: color }}
+      />
       
       {/* Carousel indicators */}
-      <div className="absolute bottom-3 lg:bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 lg:gap-2">
-        {images.map((_, idx) => (
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+        {ministryImages.map((_, idx) => (
           <button
             key={idx}
             onClick={() => setCurrentIndex(idx)}
-            className={`w-1.5 h-1.5 lg:w-2 lg:h-2 rounded-full transition-all ${
-              idx === currentIndex
-                ? "w-4 lg:w-6"
-                : "bg-white/50"
+            className={`w-2 h-2 rounded-full transition-all ${
+              idx === currentIndex ? "w-6" : "bg-primary/30"
             }`}
             style={{
               backgroundColor: idx === currentIndex ? color : undefined,
@@ -112,7 +110,7 @@ function ImageCarousel({ images, color }: { images: string[]; color: string }) {
           />
         ))}
       </div>
-    </div>
+    </>
   );
 }
 
@@ -134,44 +132,46 @@ export function Approach() {
           </p>
         </div>
 
-        {/* Steps - Compact layout on mobile */}
-        <div className="space-y-6 lg:space-y-16">
-          {steps.map((step, index) => (
+        {/* Steps - Unified card design with background images */}
+        <div className="space-y-6 lg:space-y-8">
+          {steps.map((step) => (
             <div
               key={step.number}
-              className={`flex flex-col ${
-                index % 2 === 1 ? "lg:flex-row-reverse" : "lg:flex-row"
-              } gap-4 lg:gap-12 items-stretch`}
+              className="relative rounded-2xl lg:rounded-3xl overflow-hidden border border-border min-h-[280px] lg:min-h-[320px]"
             >
-              {/* Content Card */}
-              <div className="flex-1">
-                <div className="h-full p-5 lg:p-8 rounded-2xl lg:rounded-3xl border border-border bg-card">
+              {/* Background carousel */}
+              <BackgroundCarousel color={step.color} />
+              
+              {/* Content overlay */}
+              <div className="relative z-10 p-6 lg:p-10 h-full flex flex-col justify-center">
+                <div className="max-w-2xl">
                   {/* Header */}
                   <div className="flex items-center gap-3 lg:gap-4 mb-4 lg:mb-5">
                     <span
-                      className="text-3xl lg:text-5xl font-bold"
+                      className="text-4xl lg:text-6xl font-bold"
                       style={{ color: step.color }}
                     >
                       {step.number}
                     </span>
-                    <h3 className="text-xl lg:text-3xl font-bold text-primary">
+                    <h3 className="text-2xl lg:text-4xl font-bold text-primary">
                       {step.title}
                     </h3>
                   </div>
 
                   {/* Description */}
-                  <p className="text-sm lg:text-base text-muted-foreground leading-relaxed mb-4 lg:mb-6">
+                  <p className="text-sm lg:text-base text-muted-foreground leading-relaxed mb-5 lg:mb-6">
                     {step.description}
                   </p>
 
                   {/* Features as pills */}
-                  <div className="flex flex-wrap gap-1.5 lg:gap-2">
+                  <div className="flex flex-wrap gap-2 lg:gap-3">
                     {step.features.map((feature) => (
                       <span
                         key={feature}
-                        className="px-3 lg:px-4 py-1.5 lg:py-2 text-xs lg:text-sm font-medium rounded-full transition-colors"
+                        className="px-3 lg:px-4 py-1.5 lg:py-2 text-xs lg:text-sm font-medium rounded-full backdrop-blur-sm border transition-colors"
                         style={{
-                          backgroundColor: `${step.color}15`,
+                          backgroundColor: `${step.color}20`,
+                          borderColor: `${step.color}40`,
                           color: step.color,
                         }}
                       >
@@ -180,11 +180,6 @@ export function Approach() {
                     ))}
                   </div>
                 </div>
-              </div>
-
-              {/* Image Carousel - Smaller on mobile */}
-              <div className="flex-1 max-h-48 lg:max-h-none">
-                <ImageCarousel images={step.images} color={step.color} />
               </div>
             </div>
           ))}
