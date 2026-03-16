@@ -30,12 +30,11 @@ export function Header() {
   }, []);
 
   return (
-    <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${
-        scrolled 
-          ? "bg-background/95 backdrop-blur-md" 
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${scrolled
+          ? "bg-background/95 backdrop-blur-md"
           : "bg-transparent"
-      }`}
+        }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
@@ -48,7 +47,7 @@ export function Header() {
               height={40}
               className="w-10 h-10"
             />
-            <span className="text-xl font-bold tracking-tight text-primary">FLOCK</span>
+            <span className="text-xl font-bold tracking-tight text-primary">Flock Ministries</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -57,11 +56,10 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-sm font-medium transition-all duration-500 ${
-                  scrolled
+                className={`text-sm font-medium transition-all duration-500 ${scrolled
                     ? "px-4 py-2 text-muted-foreground hover:text-primary"
                     : "px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm text-white/90 hover:bg-white/20 hover:text-white"
-                }`}
+                  }`}
               >
                 {link.label}
               </Link>
