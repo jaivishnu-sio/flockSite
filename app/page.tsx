@@ -16,9 +16,9 @@ export default function Home() {
   return (
     <>
       <Header />
-      <Announcements />
       <main>
         <Hero />
+        <Announcements />
         <Challenge />
         <Approach />
         <Curriculum />

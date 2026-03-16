@@ -97,21 +97,6 @@ export function Training() {
               and proven strategies.
             </p>
 
-            <div className="mt-10 grid sm:grid-cols-3 gap-6">
-              <div className="text-center sm:text-left">
-                <div className="text-3xl lg:text-4xl font-bold text-[#A78BFA]">50+</div>
-                <div className="text-sm text-white/70 mt-1">Training Events</div>
-              </div>
-              <div className="text-center sm:text-left">
-                <div className="text-3xl lg:text-4xl font-bold text-[#A78BFA]">5000+</div>
-                <div className="text-sm text-white/70 mt-1">Leaders Trained</div>
-              </div>
-              <div className="text-center sm:text-left">
-                <div className="text-3xl lg:text-4xl font-bold text-[#A78BFA]">15+</div>
-                <div className="text-sm text-white/70 mt-1">Years Experience</div>
-              </div>
-            </div>
-
             <div className="mt-10 flex flex-wrap gap-4">
               <Link
                 href="/training"
