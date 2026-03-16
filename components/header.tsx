@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
+// Header component with scroll-aware styling
+
 const navLinks = [
   { href: "#approach", label: "Approach" },
   { href: "/curriculum", label: "Curriculum" },
