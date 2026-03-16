@@ -2,7 +2,7 @@
 
 @theme inline {
   /* Light theme - Mature, ministry-focused palette based on Flock logo */
-  --color-background: #FAFAFA;
+  --color-background: #171717;
   --color-foreground: #1B3A5F;
   --color-card: #FFFFFF;
   --color-card-foreground: #1B3A5F;
@@ -26,7 +26,7 @@
   --color-green: #7ED321;
   --color-coral: #FF7B6F;
   --color-purple: #A78BFA;
-  
+
   /* Bright accent for kids/attention grabbing */
   --color-kids-bright: #FF6B35;
   --color-kids-yellow: #FFCA28;
