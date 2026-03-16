@@ -8,8 +8,7 @@ import { Curriculum } from "@/components/curriculum";
 import { Training } from "@/components/training";
 import { MobileApp } from "@/components/mobile-app";
 import { PartnerPreview } from "@/components/partner-preview";
-import { Audience } from "@/components/audience";
-import { Mission } from "@/components/mission";
+import { AboutUs } from "@/components/about-us";
 import { CTA } from "@/components/cta";
 import { Footer } from "@/components/footer";
 
@@ -26,8 +25,7 @@ export default function Home() {
         <Training />
         <MobileApp />
         <PartnerPreview />
-        <Audience />
-        <Mission />
+        <AboutUs />
         <CTA />
       </main>
       <Footer />
