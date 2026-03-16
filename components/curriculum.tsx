@@ -8,7 +8,7 @@ const curriculumTypes = [
       "Complete 5-day VBS programs with themes, lessons, activities, and everything you need for a memorable week of ministry.",
     color: "#00C9B7",
     items: ["Teacher Guides", "Student Workbooks", "Activity Sheets", "Craft Templates"],
-    featured: "Kingdom Quest VBS 2026",
+    featured: "The Voice of Wisdom 2025",
   },
   {
     title: "Sunday School Curriculum",
