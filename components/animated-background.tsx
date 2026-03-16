@@ -12,7 +12,7 @@ interface Particle {
   opacity: number;
 }
 
-const colors = ["#5ABCB9", "#8DC63F", "#F28B82", "#FF6B35", "#FFD93D"];
+const colors = ["#00C9B7", "#7ED321", "#FF7B6F", "#FF6B35", "#A78BFA", "#FFCA28"];
 
 export function AnimatedBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -33,18 +33,18 @@ export function AnimatedBackground() {
     };
 
     const createParticles = () => {
-      const particleCount = Math.floor((canvas.width * canvas.height) / 25000);
+      const particleCount = Math.floor((canvas.width * canvas.height) / 20000);
       particlesRef.current = [];
 
       for (let i = 0; i < particleCount; i++) {
         particlesRef.current.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 0.3,
-          vy: (Math.random() - 0.5) * 0.3,
-          radius: Math.random() * 3 + 1,
+          vx: (Math.random() - 0.5) * 0.4,
+          vy: (Math.random() - 0.5) * 0.4,
+          radius: Math.random() * 4 + 1.5,
           color: colors[Math.floor(Math.random() * colors.length)],
-          opacity: Math.random() * 0.4 + 0.1,
+          opacity: Math.random() * 0.5 + 0.2,
         });
       }
     };
@@ -62,7 +62,7 @@ export function AnimatedBackground() {
     const drawConnections = () => {
       if (!ctx) return;
       const particles = particlesRef.current;
-      const maxDistance = 120;
+      const maxDistance = 150;
 
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
@@ -75,8 +75,8 @@ export function AnimatedBackground() {
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
             ctx.strokeStyle = particles[i].color;
-            ctx.globalAlpha = ((maxDistance - distance) / maxDistance) * 0.1;
-            ctx.lineWidth = 0.5;
+            ctx.globalAlpha = ((maxDistance - distance) / maxDistance) * 0.15;
+            ctx.lineWidth = 0.8;
             ctx.stroke();
             ctx.globalAlpha = 1;
           }
@@ -90,10 +90,10 @@ export function AnimatedBackground() {
       const dy = mouseRef.current.y - particle.y;
       const distance = Math.sqrt(dx * dx + dy * dy);
 
-      if (distance < 100) {
-        const force = (100 - distance) / 100;
-        particle.vx -= (dx / distance) * force * 0.02;
-        particle.vy -= (dy / distance) * force * 0.02;
+      if (distance < 120) {
+        const force = (120 - distance) / 120;
+        particle.vx -= (dx / distance) * force * 0.03;
+        particle.vy -= (dy / distance) * force * 0.03;
       }
 
       // Apply velocity
@@ -105,8 +105,8 @@ export function AnimatedBackground() {
       particle.vy *= 0.99;
 
       // Add slight random movement
-      particle.vx += (Math.random() - 0.5) * 0.02;
-      particle.vy += (Math.random() - 0.5) * 0.02;
+      particle.vx += (Math.random() - 0.5) * 0.025;
+      particle.vy += (Math.random() - 0.5) * 0.025;
 
       // Boundary wrapping
       if (particle.x < 0) particle.x = canvas.width;
@@ -156,7 +156,7 @@ export function AnimatedBackground() {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none z-0"
-      style={{ opacity: 0.6 }}
+      style={{ opacity: 0.7 }}
       aria-hidden="true"
     />
   );

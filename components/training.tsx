@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const trainingHighlights = [
@@ -25,10 +26,10 @@ const trainingHighlights = [
 ];
 
 const trainingImages = [
-  "/images/training-1.jpg",
-  "/images/training-2.jpg",
-  "/images/training-3.jpg",
-  "/images/training-4.jpg",
+  "/images/ministry-1.png",
+  "/images/ministry-2.png",
+  "/images/ministry-3.png",
+  "/images/ministry-4.png",
 ];
 
 export function Training() {
@@ -43,7 +44,7 @@ export function Training() {
 
   return (
     <section className="py-24 lg:py-32 relative overflow-hidden">
-      {/* Background images carousel with actual image support */}
+      {/* Background images carousel */}
       <div className="absolute inset-0">
         {trainingImages.map((imagePath, index) => (
           <div
@@ -52,19 +53,18 @@ export function Training() {
               index === currentImageIndex ? "opacity-100" : "opacity-0"
             }`}
           >
-            {/* Placeholder gradient - will be replaced when images are added */}
-            <div 
-              className="absolute inset-0 bg-cover bg-center"
-              style={{
-                backgroundImage: `linear-gradient(135deg, rgba(167, 139, 250, 0.4) 0%, rgba(27, 58, 95, 0.5) 50%, rgba(126, 211, 33, 0.3) 100%)`,
-              }}
+            <Image
+              src={imagePath}
+              alt=""
+              fill
+              className="object-cover"
+              sizes="100vw"
+              priority={index === 0}
             />
-            {/* This will show when actual images are added */}
-            {/* <img src={imagePath} alt="" className="absolute inset-0 w-full h-full object-cover" /> */}
           </div>
         ))}
-        {/* Dark overlay - 75% opacity */}
-        <div className="absolute inset-0 bg-primary/[0.75]" />
+        {/* Dark overlay - 78% opacity */}
+        <div className="absolute inset-0 bg-[#0A0F1A]/[0.78]" />
       </div>
 
       {/* Image indicators */}

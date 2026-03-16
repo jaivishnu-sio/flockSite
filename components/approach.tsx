@@ -1,6 +1,14 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+
+const ministryImages = [
+  "/images/ministry-1.png",
+  "/images/ministry-2.png",
+  "/images/ministry-3.png",
+  "/images/ministry-4.png",
+];
 
 const steps = [
   {
@@ -15,12 +23,6 @@ const steps = [
       "Engaging group activities",
     ],
     color: "#00C9B7",
-    images: [
-      "/images/vbs-1.jpg",
-      "/images/vbs-2.jpg",
-      "/images/vbs-3.jpg",
-      "/images/vbs-4.jpg",
-    ],
   },
   {
     number: "02",
@@ -34,12 +36,6 @@ const steps = [
       "Teacher training resources",
     ],
     color: "#7ED321",
-    images: [
-      "/images/ss-1.jpg",
-      "/images/ss-2.jpg",
-      "/images/ss-3.jpg",
-      "/images/ss-4.jpg",
-    ],
   },
   {
     number: "03",
@@ -53,59 +49,59 @@ const steps = [
       "Family discussion guides",
     ],
     color: "#FF7B6F",
-    images: [
-      "/images/connected-1.jpg",
-      "/images/connected-2.jpg",
-      "/images/connected-3.jpg",
-      "/images/connected-4.jpg",
-    ],
   },
 ];
 
-function BackgroundCarousel({ images, color }: { images: string[]; color: string }) {
+function BackgroundCarousel({ color }: { color: string }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     intervalRef.current = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % images.length);
+      setCurrentIndex((prev) => (prev + 1) % ministryImages.length);
     }, 3000);
 
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
-  }, [images.length]);
+  }, []);
 
   return (
     <>
       {/* Background images */}
-      {images.map((_, idx) => (
+      {ministryImages.map((src, idx) => (
         <div
           key={idx}
           className={`absolute inset-0 transition-opacity duration-1000 ${
             idx === currentIndex ? "opacity-100" : "opacity-0"
           }`}
         >
-          {/* Placeholder background until real images */}
-          <div
-            className="absolute inset-0"
-            style={{
-              background: `linear-gradient(135deg, ${color}30 0%, ${color}15 50%, ${color}25 100%)`,
-            }}
+          <Image
+            src={src}
+            alt=""
+            fill
+            className="object-cover"
+            sizes="100vw"
           />
         </div>
       ))}
       {/* 75% opacity overlay */}
       <div className="absolute inset-0 bg-background/[0.75]" />
       
+      {/* Subtle color tint */}
+      <div 
+        className="absolute inset-0 opacity-10"
+        style={{ backgroundColor: color }}
+      />
+      
       {/* Carousel indicators */}
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-        {images.map((_, idx) => (
+        {ministryImages.map((_, idx) => (
           <button
             key={idx}
             onClick={() => setCurrentIndex(idx)}
             className={`w-2 h-2 rounded-full transition-all ${
-              idx === currentIndex ? "w-6" : "bg-white/50"
+              idx === currentIndex ? "w-6" : "bg-primary/30"
             }`}
             style={{
               backgroundColor: idx === currentIndex ? color : undefined,
@@ -144,7 +140,7 @@ export function Approach() {
               className="relative rounded-2xl lg:rounded-3xl overflow-hidden border border-border min-h-[280px] lg:min-h-[320px]"
             >
               {/* Background carousel */}
-              <BackgroundCarousel images={step.images} color={step.color} />
+              <BackgroundCarousel color={step.color} />
               
               {/* Content overlay */}
               <div className="relative z-10 p-6 lg:p-10 h-full flex flex-col justify-center">

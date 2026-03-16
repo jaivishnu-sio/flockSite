@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* Mature, ministry-focused palette based on Flock logo */
+  /* Light theme - Mature, ministry-focused palette based on Flock logo */
   --color-background: #FAFAFA;
   --color-foreground: #1B3A5F;
   --color-card: #FFFFFF;
@@ -12,7 +12,7 @@
   --color-secondary-foreground: #1B3A5F;
   --color-muted: #E8EEF4;
   --color-muted-foreground: #5A7A99;
-  --color-accent: #5ABCB9;
+  --color-accent: #00C9B7;
   --color-accent-foreground: #FFFFFF;
   --color-destructive: #DC2626;
   --color-destructive-foreground: #FFFFFF;
@@ -33,6 +33,27 @@
 
   --font-sans: "Lexend", ui-sans-serif, system-ui, sans-serif;
   --font-mono: ui-monospace, monospace;
+}
+
+/* Dark theme */
+.dark {
+  --color-background: #0A0F1A;
+  --color-foreground: #F0F4F8;
+  --color-card: #111827;
+  --color-card-foreground: #F0F4F8;
+  --color-primary: #F0F4F8;
+  --color-primary-foreground: #0A0F1A;
+  --color-secondary: #1F2937;
+  --color-secondary-foreground: #F0F4F8;
+  --color-muted: #1F2937;
+  --color-muted-foreground: #9CA3AF;
+  --color-accent: #00C9B7;
+  --color-accent-foreground: #0A0F1A;
+  --color-destructive: #EF4444;
+  --color-destructive-foreground: #FFFFFF;
+  --color-border: #374151;
+  --color-input: #1F2937;
+  --color-ring: #00C9B7;
 }
 
 * {
