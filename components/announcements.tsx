@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface Announcement {
   id: string;
@@ -52,6 +52,14 @@ const typeLabels = {
 export function Announcements() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  // Auto-rotate announcements
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % announcements.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   const nextAnnouncement = () => {
     setCurrentIndex((prev) => (prev + 1) % announcements.length);
   };
@@ -79,6 +87,12 @@ export function Announcements() {
 
           {/* Announcement Content */}
           <div className="flex-1 flex items-center justify-center gap-4 min-w-0">
+            {/* Blinking attention indicator */}
+            <div className="relative shrink-0">
+              <span className="absolute inset-0 rounded-full bg-[#00C9B7] animate-ping opacity-75" />
+              <span className="relative block w-2.5 h-2.5 rounded-full bg-[#00C9B7]" />
+            </div>
+            
             <span className={`px-3 py-1 rounded-full text-xs font-semibold text-white ${typeColors[current.type]} shrink-0`}>
               {typeLabels[current.type]}
             </span>

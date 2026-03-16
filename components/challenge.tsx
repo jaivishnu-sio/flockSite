@@ -59,7 +59,7 @@ export function Challenge() {
               <div
                 key={stat.label}
                 className={`
-                  relative p-6 lg:p-8 rounded-3xl border border-border bg-card
+                  relative p-6 lg:p-8 rounded-3xl bg-card
                   transform transition-all duration-700 ease-out
                   ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}
                   ${index === 1 ? "lg:-translate-y-4" : ""}
@@ -88,22 +88,62 @@ export function Challenge() {
           </div>
         </div>
 
-        {/* Flock bridges that gap - Simple pill */}
+        {/* Flock bridges that gap - More prominent section */}
         <div 
           className={`
-            mt-16 lg:mt-20 text-center
+            mt-20 lg:mt-28
             transform transition-all duration-700 ease-out delay-500
             ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}
           `}
         >
-          <div className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-primary text-primary-foreground shadow-xl">
-            <div className="w-3 h-3 rounded-full bg-[#7ED321] animate-pulse" />
-            <span className="text-lg lg:text-xl font-bold">
-              Flock bridges that gap
-            </span>
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
+          <div className="relative bg-gradient-to-r from-[#00C9B7]/10 via-[#7ED321]/10 to-[#00C9B7]/10 rounded-3xl p-8 lg:p-12 overflow-hidden">
+            {/* Animated background glow */}
+            <div className="absolute inset-0 overflow-hidden">
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#00C9B7]/20 rounded-full blur-3xl animate-pulse" />
+            </div>
+            
+            <div className="relative text-center">
+              {/* Icon */}
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#00C9B7]/20 mb-6">
+                <svg className="w-8 h-8 text-[#00C9B7]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 21v-7.5a.75.75 0 01.75-.75h3a.75.75 0 01.75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349m-16.5 11.65V9.35m0 0a3.001 3.001 0 003.75-.615A2.993 2.993 0 009.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 002.25 1.016c.896 0 1.7-.393 2.25-1.016a3.001 3.001 0 003.75.614m-16.5 0a3.004 3.004 0 01-.621-4.72L4.318 3.44A1.5 1.5 0 015.378 3h13.243a1.5 1.5 0 011.06.44l1.19 1.189a3 3 0 01-.621 4.72m-13.5 8.65h3.75a.75.75 0 00.75-.75V13.5a.75.75 0 00-.75-.75H6.75a.75.75 0 00-.75.75v3.75c0 .415.336.75.75.75z" />
+                </svg>
+              </div>
+              
+              <h3 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-primary mb-4">
+                <span className="text-[#00C9B7]">Flock</span> bridges that gap
+              </h3>
+              
+              <p className="text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
+                We connect the excitement of VBS to the lasting growth of Sunday School, 
+                creating a seamless journey of faith for every child.
+              </p>
+              
+              {/* Visual bridge representation */}
+              <div className="flex items-center justify-center gap-4 lg:gap-6">
+                <div className="flex flex-col items-center">
+                  <div className="w-16 h-16 lg:w-20 lg:h-20 rounded-2xl bg-[#00C9B7] flex items-center justify-center text-white font-bold text-sm lg:text-base">
+                    VBS
+                  </div>
+                  <span className="mt-2 text-xs lg:text-sm text-muted-foreground">Catching</span>
+                </div>
+                
+                {/* Animated connecting dots */}
+                <div className="flex items-center gap-1">
+                  <div className="w-2 h-2 rounded-full bg-[#00C9B7] animate-pulse" style={{ animationDelay: "0ms" }} />
+                  <div className="w-2 h-2 rounded-full bg-[#00C9B7]/80 animate-pulse" style={{ animationDelay: "150ms" }} />
+                  <div className="w-2 h-2 rounded-full bg-[#7ED321]/80 animate-pulse" style={{ animationDelay: "300ms" }} />
+                  <div className="w-2 h-2 rounded-full bg-[#7ED321] animate-pulse" style={{ animationDelay: "450ms" }} />
+                </div>
+                
+                <div className="flex flex-col items-center">
+                  <div className="w-16 h-16 lg:w-20 lg:h-20 rounded-2xl bg-[#7ED321] flex items-center justify-center text-white font-bold text-sm lg:text-base text-center px-1">
+                    Sunday School
+                  </div>
+                  <span className="mt-2 text-xs lg:text-sm text-muted-foreground">Nurturing</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
