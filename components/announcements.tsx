@@ -63,7 +63,7 @@ export function Announcements() {
   const current = announcements[currentIndex];
 
   return (
-    <section className="py-4 px-6 bg-secondary border-y border-border relative z-40">
+    <section className="py-4 px-6 bg-secondary/50 relative z-40">
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center justify-between gap-4">
           {/* Navigation Arrow - Left */}

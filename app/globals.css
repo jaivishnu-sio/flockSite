@@ -16,7 +16,7 @@
   --color-accent-foreground: #FFFFFF;
   --color-destructive: #DC2626;
   --color-destructive-foreground: #FFFFFF;
-  --color-border: #D1DCE8;
+  --color-border: transparent;
   --color-input: #E8EEF4;
   --color-ring: #1B3A5F;
   --radius: 0.5rem;
@@ -35,33 +35,30 @@
   --font-mono: ui-monospace, monospace;
 }
 
-/* Dark theme */
+/* Dark theme overrides */
 .dark {
   --color-background: #0A0F1A;
   --color-foreground: #F0F4F8;
-  --color-card: #111827;
+  --color-card: #0F172A;
   --color-card-foreground: #F0F4F8;
   --color-primary: #F0F4F8;
   --color-primary-foreground: #0A0F1A;
-  --color-secondary: #1F2937;
+  --color-secondary: #1E293B;
   --color-secondary-foreground: #F0F4F8;
-  --color-muted: #1F2937;
-  --color-muted-foreground: #9CA3AF;
+  --color-muted: #1E293B;
+  --color-muted-foreground: #94A3B8;
   --color-accent: #00C9B7;
   --color-accent-foreground: #0A0F1A;
   --color-destructive: #EF4444;
   --color-destructive-foreground: #FFFFFF;
-  --color-border: #374151;
-  --color-input: #1F2937;
+  --color-border: transparent;
+  --color-input: #1E293B;
   --color-ring: #00C9B7;
-}
-
-* {
-  border-color: var(--color-border);
 }
 
 body {
   background-color: var(--color-background);
   color: var(--color-foreground);
   font-family: var(--font-sans);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
