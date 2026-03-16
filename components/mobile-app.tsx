@@ -110,7 +110,7 @@ export function MobileApp() {
             another for missionaries and ministry workers.
           </p>
           {/* Free content highlight */}
-          <div className="mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#7ED321]/15 border border-[#7ED321]/25">
+          <div className="mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#7ED321]/15">
             <svg className="w-5 h-5 text-[#7ED321]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
             </svg>
@@ -122,44 +122,43 @@ export function MobileApp() {
 
         {/* Apps with Mockups */}
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
-          {apps.map((app, index) => (
+          {apps.map((app) => (
             <div
               key={app.id}
-              className="bg-card border border-border rounded-3xl p-6 lg:p-8 relative overflow-hidden"
+              className="bg-card rounded-3xl p-6 lg:p-8 relative overflow-hidden flex flex-col"
             >
-              <div className="flex flex-col md:flex-row gap-6 lg:gap-8 items-center">
+              {/* Top Section - Badge, Tagline, Name centered */}
+              <div className="text-center mb-6">
+                <div
+                  className="inline-block px-3 py-1 rounded-full text-xs font-semibold text-white mb-3"
+                  style={{ backgroundColor: app.color }}
+                >
+                  {app.highlight}
+                </div>
+                <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1">
+                  {app.tagline}
+                </div>
+                <h3 className="text-2xl lg:text-3xl font-bold text-primary">
+                  {app.name}
+                </h3>
+              </div>
+
+              {/* Middle Section - Mockup left, Content right */}
+              <div className="flex flex-col md:flex-row gap-6 lg:gap-8 items-center flex-1">
                 {/* Phone Mockup */}
-                <div className={`w-40 sm:w-48 flex-shrink-0 ${index === 1 ? "md:order-2" : ""}`}>
+                <div className="w-36 sm:w-40 flex-shrink-0">
                   <PhoneMockup app={app.id as "ministries" | "shepherds"} color={app.color} />
                 </div>
 
                 {/* Content */}
-                <div className={`flex-1 text-center md:text-left ${index === 1 ? "md:order-1" : ""}`}>
-                  {/* Highlight badge */}
-                  <div
-                    className="inline-block px-3 py-1 rounded-full text-xs font-semibold text-white mb-4"
-                    style={{ backgroundColor: app.color }}
-                  >
-                    {app.highlight}
-                  </div>
-
-                  {/* App Header */}
-                  <div className="mb-4">
-                    <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1">
-                      {app.tagline}
-                    </div>
-                    <h3 className="text-2xl lg:text-3xl font-bold text-primary">
-                      {app.name}
-                    </h3>
-                  </div>
-
+                <div className="flex-1 text-center md:text-left">
                   {/* Description */}
-                  <p className="text-muted-foreground leading-relaxed mb-5 text-sm lg:text-base">
+                  <p className="text-white/70 leading-relaxed mb-5 text-sm lg:text-base">
                     {app.description}
                   </p>
 
                   {/* Features */}
-                  <div className="flex flex-wrap justify-center md:justify-start gap-2 mb-6">
+                  <div className="flex flex-wrap justify-center md:justify-start gap-2">
                     {app.features.map((feature) => (
                       <span
                         key={feature}
@@ -173,42 +172,45 @@ export function MobileApp() {
                       </span>
                     ))}
                   </div>
+                </div>
+              </div>
 
-                  {/* Store Buttons */}
-                  <div className="flex flex-wrap justify-center md:justify-start gap-2 mt-4">
-                    <button
-                      type="button"
-                      className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold transition-colors text-white"
-                      style={{ backgroundColor: app.color }}
-                    >
-                      <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor">
-                        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
-                      </svg>
-                      App Store
-                    </button>
-                    <button
-                      type="button"
-                      className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold transition-colors text-white"
-                      style={{ backgroundColor: app.color }}
-                    >
-                      <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor">
-                        <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 010 1.73l-2.807 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z" />
-                      </svg>
-                      Google Play
-                    </button>
-                  </div>
+              {/* Bottom Section - Know More and Buttons */}
+              <div className="mt-6 pt-6 border-t border-white/10">
+                {/* Know More Link */}
+                <Link
+                  href="/flock-ministries"
+                  className="inline-flex items-center gap-2 font-semibold transition-colors text-sm mb-4"
+                  style={{ color: app.color }}
+                >
+                  Know More
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </Link>
 
-                  {/* Know More Link */}
-                  <Link
-                    href="/flock-ministries"
-                    className="inline-flex items-center gap-2 font-semibold transition-colors text-sm mt-4"
-                    style={{ color: app.color }}
+                {/* Store Buttons - Horizontal */}
+                <div className="flex items-center gap-3">
+                  <button
+                    type="button"
+                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-xs font-semibold transition-colors text-white"
+                    style={{ backgroundColor: app.color }}
                   >
-                    Know More
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor">
+                      <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
                     </svg>
-                  </Link>
+                    App Store
+                  </button>
+                  <button
+                    type="button"
+                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-xs font-semibold transition-colors text-white"
+                    style={{ backgroundColor: app.color }}
+                  >
+                    <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor">
+                      <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 010 1.73l-2.807 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z" />
+                    </svg>
+                    Google Play
+                  </button>
                 </div>
               </div>
             </div>
