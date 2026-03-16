@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Lexend } from "next/font/google";
 import { AnimatedBackground } from "@/components/animated-background";
-import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
 const lexend = Lexend({
@@ -25,7 +24,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#1B3A5F",
+  themeColor: "#111315",
   width: "device-width",
   initialScale: 1,
 };
@@ -36,18 +35,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <body className={`${lexend.variable} font-sans antialiased`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-        >
-          <AnimatedBackground />
-          <div className="relative z-10">
-            {children}
-          </div>
-        </ThemeProvider>
+        <AnimatedBackground />
+        <div className="relative z-10">
+          {children}
+        </div>
       </body>
     </html>
   );

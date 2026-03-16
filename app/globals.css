@@ -1,27 +1,27 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* Light theme - Mature, ministry-focused palette based on Flock logo */
+  /* Dark theme - permanent color scheme */
   --color-background: #111315;
-  --color-foreground: #1B3A5F;
-  --color-card: #FFFFFF;
-  --color-card-foreground: #1B3A5F;
-  --color-primary: #1B3A5F;
-  --color-primary-foreground: #FFFFFF;
-  --color-secondary: #F0F4F8;
-  --color-secondary-foreground: #1B3A5F;
-  --color-muted: #E8EEF4;
-  --color-muted-foreground: #5A7A99;
+  --color-foreground: #F0F4F8;
+  --color-card: #1A1D20;
+  --color-card-foreground: #F0F4F8;
+  --color-primary: #F0F4F8;
+  --color-primary-foreground: #111315;
+  --color-secondary: #1E2225;
+  --color-secondary-foreground: #F0F4F8;
+  --color-muted: #252A2E;
+  --color-muted-foreground: #94A3B8;
   --color-accent: #00C9B7;
-  --color-accent-foreground: #FFFFFF;
-  --color-destructive: #DC2626;
+  --color-accent-foreground: #111315;
+  --color-destructive: #EF4444;
   --color-destructive-foreground: #FFFFFF;
   --color-border: transparent;
-  --color-input: #E8EEF4;
-  --color-ring: #1B3A5F;
+  --color-input: #1E2225;
+  --color-ring: #00C9B7;
   --radius: 0.5rem;
 
-  /* Logo accent colors - more vibrant */
+  /* Logo accent colors - vibrant */
   --color-teal: #00C9B7;
   --color-green: #7ED321;
   --color-coral: #FF7B6F;
@@ -35,30 +35,8 @@
   --font-mono: ui-monospace, monospace;
 }
 
-/* Dark theme overrides */
-.dark {
-  --color-background: #0A0F1A;
-  --color-foreground: #F0F4F8;
-  --color-card: #0F172A;
-  --color-card-foreground: #F0F4F8;
-  --color-primary: #F0F4F8;
-  --color-primary-foreground: #0A0F1A;
-  --color-secondary: #1E293B;
-  --color-secondary-foreground: #F0F4F8;
-  --color-muted: #1E293B;
-  --color-muted-foreground: #94A3B8;
-  --color-accent: #00C9B7;
-  --color-accent-foreground: #0A0F1A;
-  --color-destructive: #EF4444;
-  --color-destructive-foreground: #FFFFFF;
-  --color-border: transparent;
-  --color-input: #1E293B;
-  --color-ring: #00C9B7;
-}
-
 body {
   background-color: var(--color-background);
   color: var(--color-foreground);
   font-family: var(--font-sans);
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
