@@ -5,7 +5,7 @@ export function CTA() {
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
           {/* Contact Form */}
           <div>
-            <span className="text-sm font-semibold text-[#5ABCB9] uppercase tracking-wider">
+            <span className="text-sm font-semibold text-[#00C9B7] uppercase tracking-wider">
               Get Started
             </span>
             <h2 className="mt-4 text-4xl sm:text-5xl font-bold tracking-tight text-primary">

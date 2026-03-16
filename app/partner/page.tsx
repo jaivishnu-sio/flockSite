@@ -16,7 +16,7 @@ const impactAreas = [
       "Support the development of engaging Vacation Bible School materials that introduce children to the gospel.",
     amount: "$50",
     impact: "provides VBS materials for 10 children",
-    color: "#5ABCB9",
+    color: "#00C9B7",
   },
   {
     title: "Sunday School Resources",
@@ -24,7 +24,7 @@ const impactAreas = [
       "Fund curriculum development for year-round discipleship and spiritual growth.",
     amount: "$100",
     impact: "equips one Sunday School class for a quarter",
-    color: "#8DC63F",
+    color: "#7ED321",
   },
   {
     title: "Missionary Training",
@@ -40,7 +40,7 @@ const impactAreas = [
       "Help us continue improving our mobile apps to reach children wherever they are.",
     amount: "$500",
     impact: "sponsors app development for one month",
-    color: "#F28B82",
+    color: "#FF7B6F",
   },
 ];
 
@@ -108,9 +108,9 @@ export default function PartnerPage() {
         <section className="py-20 lg:py-28 bg-secondary">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="text-center mb-16">
-              <span className="text-sm font-semibold text-[#5ABCB9] uppercase tracking-wider">
-                Your Impact
-              </span>
+            <span className="text-sm font-semibold text-[#00C9B7] uppercase tracking-wider">
+              Your Impact
+            </span>
               <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-primary">
                 Where Your Gift Goes
               </h2>
@@ -159,9 +159,9 @@ export default function PartnerPage() {
         <section className="py-20 lg:py-28 bg-background">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="text-center mb-16">
-              <span className="text-sm font-semibold text-[#5ABCB9] uppercase tracking-wider">
-                Partnership Levels
-              </span>
+            <span className="text-sm font-semibold text-[#00C9B7] uppercase tracking-wider">
+              Partnership Levels
+            </span>
               <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-primary">
                 Become a Monthly Partner
               </h2>
@@ -198,7 +198,7 @@ export default function PartnerPage() {
                     {level.benefits.map((benefit) => (
                       <li key={benefit} className="flex items-start gap-3">
                         <svg
-                          className="w-5 h-5 text-[#5ABCB9] flex-shrink-0 mt-0.5"
+                          className="w-5 h-5 text-[#00C9B7] flex-shrink-0 mt-0.5"
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
@@ -307,9 +307,9 @@ export default function PartnerPage() {
 
             <div className="grid md:grid-cols-3 gap-8">
               <div className="text-center p-8">
-                <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-[#5ABCB9]/10 flex items-center justify-center">
+                <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-[#00C9B7]/10 flex items-center justify-center">
                   <svg
-                    className="w-8 h-8 text-[#5ABCB9]"
+                    className="w-8 h-8 text-[#00C9B7]"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -330,9 +330,9 @@ export default function PartnerPage() {
               </div>
 
               <div className="text-center p-8">
-                <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-[#8DC63F]/10 flex items-center justify-center">
+                <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-[#7ED321]/10 flex items-center justify-center">
                   <svg
-                    className="w-8 h-8 text-[#8DC63F]"
+                    className="w-8 h-8 text-[#7ED321]"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"

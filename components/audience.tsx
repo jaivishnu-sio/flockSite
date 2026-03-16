@@ -3,25 +3,25 @@ const audiences = [
     title: "Churches",
     description:
       "Equip your congregation with comprehensive children's ministry programs that make an eternal impact.",
-    color: "#5ABCB9",
+    color: "#00C9B7",
   },
   {
     title: "Pastors & Leaders",
     description:
       "Access proven curriculum and resources that simplify ministry planning and volunteer training.",
-    color: "#8DC63F",
+    color: "#7ED321",
   },
   {
     title: "Parents",
     description:
       "Partner with your church to reinforce faith at home through the Flock mobile app and family resources.",
-    color: "#F28B82",
+    color: "#FF7B6F",
   },
   {
     title: "Children",
     description:
       "Experience the joy of learning about Jesus through songs, videos, and activities designed just for them.",
-    color: "#9B8BB4",
+    color: "#A78BFA",
   },
 ];
 
@@ -31,7 +31,7 @@ export function Audience() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-sm font-semibold text-[#5ABCB9] uppercase tracking-wider">
+          <span className="text-sm font-semibold text-[#00C9B7] uppercase tracking-wider">
             Who We Serve
           </span>
           <h2 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-primary">

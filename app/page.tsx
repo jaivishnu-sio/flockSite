@@ -6,6 +6,7 @@ import { Approach } from "@/components/approach";
 import { Curriculum } from "@/components/curriculum";
 import { Training } from "@/components/training";
 import { MobileApp } from "@/components/mobile-app";
+import { PartnerPreview } from "@/components/partner-preview";
 import { Audience } from "@/components/audience";
 import { Mission } from "@/components/mission";
 import { CTA } from "@/components/cta";
@@ -23,6 +24,7 @@ export default function Home() {
         <Curriculum />
         <Training />
         <MobileApp />
+        <PartnerPreview />
         <Audience />
         <Mission />
         <CTA />
