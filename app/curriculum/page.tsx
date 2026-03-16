@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 const vbsCurriculum = [
   {
-    title: "Kingdom Quest VBS 2026",
+    title: "The Voice of Wisdom 2025",
     description: "An epic adventure through Scripture as kids discover what it means to be part of God's kingdom.",
     ageGroup: "Ages 4-12",
     duration: "5 Days",
