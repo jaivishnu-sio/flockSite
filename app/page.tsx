@@ -1,3 +1,4 @@
+// Flock Homepage
 import { Header } from "@/components/header";
 import { Announcements } from "@/components/announcements";
 import { Hero } from "@/components/hero";
