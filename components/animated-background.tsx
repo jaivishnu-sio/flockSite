@@ -12,13 +12,12 @@ interface Particle {
   opacity: number;
 }
 
-const colors = ["#00C9B7", "#7ED321", "#FF7B6F", "#FF6B35", "#A78BFA", "#FFCA28"];
+const colors = ["#00C9B7", "#7ED321", "#FF7B6F", "#FF6B35", "#A78BFA"];
 
 export function AnimatedBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesRef = useRef<Particle[]>([]);
   const animationFrameRef = useRef<number>(0);
-  const mouseRef = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -32,19 +31,20 @@ export function AnimatedBackground() {
       canvas.height = window.innerHeight;
     };
 
+    // Reduced particle count for better performance
     const createParticles = () => {
-      const particleCount = Math.floor((canvas.width * canvas.height) / 20000);
+      const particleCount = Math.min(30, Math.floor((canvas.width * canvas.height) / 50000));
       particlesRef.current = [];
 
       for (let i = 0; i < particleCount; i++) {
         particlesRef.current.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 0.4,
-          vy: (Math.random() - 0.5) * 0.4,
-          radius: Math.random() * 4 + 1.5,
+          vx: (Math.random() - 0.5) * 0.3,
+          vy: (Math.random() - 0.5) * 0.3,
+          radius: Math.random() * 2 + 1,
           color: colors[Math.floor(Math.random() * colors.length)],
-          opacity: Math.random() * 0.5 + 0.2,
+          opacity: Math.random() * 0.3 + 0.1,
         });
       }
     };
@@ -59,24 +59,26 @@ export function AnimatedBackground() {
       ctx.globalAlpha = 1;
     };
 
+    // Simplified connection drawing - only nearby particles
     const drawConnections = () => {
       if (!ctx) return;
       const particles = particlesRef.current;
-      const maxDistance = 150;
+      const maxDistance = 120;
 
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
+          const distSq = dx * dx + dy * dy;
 
-          if (distance < maxDistance) {
+          if (distSq < maxDistance * maxDistance) {
+            const distance = Math.sqrt(distSq);
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
             ctx.strokeStyle = particles[i].color;
-            ctx.globalAlpha = ((maxDistance - distance) / maxDistance) * 0.15;
-            ctx.lineWidth = 0.8;
+            ctx.globalAlpha = ((maxDistance - distance) / maxDistance) * 0.08;
+            ctx.lineWidth = 0.5;
             ctx.stroke();
             ctx.globalAlpha = 1;
           }
@@ -85,28 +87,8 @@ export function AnimatedBackground() {
     };
 
     const updateParticle = (particle: Particle) => {
-      // Mouse interaction - gentle push
-      const dx = mouseRef.current.x - particle.x;
-      const dy = mouseRef.current.y - particle.y;
-      const distance = Math.sqrt(dx * dx + dy * dy);
-
-      if (distance < 120) {
-        const force = (120 - distance) / 120;
-        particle.vx -= (dx / distance) * force * 0.03;
-        particle.vy -= (dy / distance) * force * 0.03;
-      }
-
-      // Apply velocity
       particle.x += particle.vx;
       particle.y += particle.vy;
-
-      // Damping
-      particle.vx *= 0.99;
-      particle.vy *= 0.99;
-
-      // Add slight random movement
-      particle.vx += (Math.random() - 0.5) * 0.025;
-      particle.vy += (Math.random() - 0.5) * 0.025;
 
       // Boundary wrapping
       if (particle.x < 0) particle.x = canvas.width;
@@ -129,10 +111,6 @@ export function AnimatedBackground() {
       animationFrameRef.current = requestAnimationFrame(animate);
     };
 
-    const handleMouseMove = (e: MouseEvent) => {
-      mouseRef.current = { x: e.clientX, y: e.clientY };
-    };
-
     const handleResize = () => {
       resizeCanvas();
       createParticles();
@@ -143,11 +121,9 @@ export function AnimatedBackground() {
     animate();
 
     window.addEventListener("resize", handleResize);
-    window.addEventListener("mousemove", handleMouseMove);
 
     return () => {
       window.removeEventListener("resize", handleResize);
-      window.removeEventListener("mousemove", handleMouseMove);
       cancelAnimationFrame(animationFrameRef.current);
     };
   }, []);
@@ -156,7 +132,7 @@ export function AnimatedBackground() {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none z-0"
-      style={{ opacity: 0.7 }}
+      style={{ opacity: 0.5 }}
       aria-hidden="true"
     />
   );
