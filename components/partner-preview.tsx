@@ -86,13 +86,13 @@ export function PartnerPreview() {
           <div className="relative">
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-4">
-                <div className="bg-card border border-border rounded-2xl p-6">
+                <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
                   <div className="text-4xl lg:text-5xl font-bold text-[#00C9B7]">$50</div>
                   <p className="text-sm text-muted-foreground mt-2">
                     provides VBS materials for 10 children
                   </p>
                 </div>
-                <div className="bg-card border border-border rounded-2xl p-6">
+                <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
                   <div className="text-4xl lg:text-5xl font-bold text-[#7ED321]">$100</div>
                   <p className="text-sm text-muted-foreground mt-2">
                     equips one Sunday School class for a quarter
@@ -100,7 +100,7 @@ export function PartnerPreview() {
                 </div>
               </div>
               <div className="space-y-4 pt-8">
-                <div className="bg-card border border-border rounded-2xl p-6">
+                <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
                   <div className="text-4xl lg:text-5xl font-bold text-[#A78BFA]">$250</div>
                   <p className="text-sm text-muted-foreground mt-2">
                     trains one missionary for children&apos;s ministry

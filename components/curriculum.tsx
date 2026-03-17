@@ -44,7 +44,7 @@ export function Curriculum() {
           {curriculumTypes.map((curriculum) => (
             <div
               key={curriculum.title}
-              className="relative bg-card border border-border rounded-3xl p-8 lg:p-10 overflow-hidden group hover:shadow-xl transition-shadow"
+              className="relative bg-white border border-gray-200 rounded-3xl p-8 lg:p-10 overflow-hidden group hover:shadow-xl transition-shadow"
             >
               {/* Background accent */}
               <div
