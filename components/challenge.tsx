@@ -59,7 +59,7 @@ export function Challenge() {
               <div
                 key={stat.label}
                 className={`
-                  relative p-6 lg:p-8 rounded-3xl bg-card
+                  relative p-6 lg:p-8 rounded-3xl bg-white border border-gray-200 shadow-sm
                   transform transition-all duration-700 ease-out
                   ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}
                   ${index === 1 ? "lg:-translate-y-4" : ""}

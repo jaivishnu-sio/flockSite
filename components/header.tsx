@@ -58,7 +58,7 @@ export function Header() {
                 href={link.href}
                 className={`text-sm font-medium transition-all duration-500 ${scrolled
                     ? "px-4 py-2 text-muted-foreground hover:text-primary"
-                    : "px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm text-white/90 hover:bg-white/20 hover:text-white"
+                    : "px-4 py-2 rounded-full bg-black/5 backdrop-blur-sm text-primary/80 hover:bg-black/10 hover:text-primary"
                   }`}
               >
                 {link.label}

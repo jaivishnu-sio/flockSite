@@ -45,7 +45,7 @@ function PhoneMockup({ app, color }: { app: "ministries" | "shepherds"; color: s
           style={{ backgroundColor: color }}
         />
         {/* Screen */}
-        <div className="bg-background rounded-[2rem] overflow-hidden aspect-[9/19]">
+        <div className="rounded-[2rem] overflow-hidden aspect-[9/19]" style={{ backgroundColor: "#111315" }}>
           <div className="h-full flex flex-col p-3">
             <div className="text-center py-6">
               <div 
@@ -67,12 +67,12 @@ function PhoneMockup({ app, color }: { app: "ministries" | "shepherds"; color: s
                   )}
                 </svg>
               </div>
-              <h3 className="text-base font-bold text-primary">{appName}</h3>
-              <p className="text-[10px] text-muted-foreground mt-0.5">{tagline}</p>
+              <h3 className="text-base font-bold text-white">{appName}</h3>
+              <p className="text-[10px] text-[#94A3B8] mt-0.5">{tagline}</p>
             </div>
             <div className="flex-1 space-y-2">
               {items.map((item) => (
-                <div key={item} className="p-2.5 rounded-lg bg-muted flex items-center gap-2.5">
+                <div key={item} className="p-2.5 rounded-lg flex items-center gap-2.5" style={{ backgroundColor: "#1A1D20" }}>
                   <div 
                     className="w-8 h-8 rounded-md flex items-center justify-center"
                     style={{ backgroundColor: `${color}15` }}
@@ -82,7 +82,7 @@ function PhoneMockup({ app, color }: { app: "ministries" | "shepherds"; color: s
                       style={{ backgroundColor: color }}
                     />
                   </div>
-                  <span className="text-xs font-medium text-primary">{item}</span>
+                  <span className="text-xs font-medium text-white">{item}</span>
                 </div>
               ))}
             </div>
@@ -95,17 +95,17 @@ function PhoneMockup({ app, color }: { app: "ministries" | "shepherds"; color: s
 
 export function MobileApp() {
   return (
-    <section id="app" className="py-24 lg:py-32 bg-secondary overflow-hidden">
+    <section id="app" className="py-24 lg:py-32 overflow-hidden" style={{ backgroundColor: "#111315" }}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12 lg:mb-16">
           <span className="text-sm font-semibold text-[#00C9B7] uppercase tracking-wider">
             Mobile Apps
           </span>
-          <h2 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-primary text-balance">
+          <h2 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white text-balance">
             Faith at Their Fingertips
           </h2>
-          <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+          <p className="mt-6 text-lg text-[#94A3B8] leading-relaxed max-w-2xl mx-auto">
             Two powerful apps designed for different needs - one for kids and families,
             another for missionaries and ministry workers.
           </p>
@@ -125,7 +125,8 @@ export function MobileApp() {
           {apps.map((app) => (
             <div
               key={app.id}
-              className="bg-card rounded-3xl p-6 lg:p-8 relative overflow-hidden flex flex-col"
+              className="rounded-3xl p-6 lg:p-8 relative overflow-hidden flex flex-col"
+              style={{ backgroundColor: "#1A1D20" }}
             >
               {/* Top Section - Badge, Tagline, Name centered */}
               <div className="text-center mb-6">
@@ -135,10 +136,10 @@ export function MobileApp() {
                 >
                   {app.highlight}
                 </div>
-                <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1">
+                <div className="text-xs font-semibold text-[#94A3B8] uppercase tracking-wider mb-1">
                   {app.tagline}
                 </div>
-                <h3 className="text-2xl lg:text-3xl font-bold text-primary">
+                <h3 className="text-2xl lg:text-3xl font-bold text-white">
                   {app.name}
                 </h3>
               </div>

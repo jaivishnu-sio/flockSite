@@ -1,23 +1,23 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* Dark theme - permanent color scheme */
+  /* Light theme - main color scheme */
   --color-background: #f4f4f4;
-  --color-foreground: #F0F4F8;
-  --color-card: #1A1D20;
-  --color-card-foreground: #F0F4F8;
-  --color-primary: #F0F4F8;
-  --color-primary-foreground: #111315;
-  --color-secondary: #1E2225;
-  --color-secondary-foreground: #F0F4F8;
-  --color-muted: #252A2E;
-  --color-muted-foreground: #94A3B8;
+  --color-foreground: #1A1D20;
+  --color-card: #FFFFFF;
+  --color-card-foreground: #1A1D20;
+  --color-primary: #1A1D20;
+  --color-primary-foreground: #FFFFFF;
+  --color-secondary: #E8E8E8;
+  --color-secondary-foreground: #1A1D20;
+  --color-muted: #E0E0E0;
+  --color-muted-foreground: #64748B;
   --color-accent: #00C9B7;
-  --color-accent-foreground: #111315;
+  --color-accent-foreground: #FFFFFF;
   --color-destructive: #EF4444;
   --color-destructive-foreground: #FFFFFF;
   --color-border: transparent;
-  --color-input: #1E2225;
+  --color-input: #E8E8E8;
   --color-ring: #00C9B7;
   --radius: 0.5rem;
 
@@ -30,6 +30,12 @@
   /* Bright accent for kids/attention grabbing */
   --color-kids-bright: #FF6B35;
   --color-kids-yellow: #FFCA28;
+
+  /* Dark theme colors for tech/app sections */
+  --color-dark-bg: #111315;
+  --color-dark-card: #1A1D20;
+  --color-dark-text: #F0F4F8;
+  --color-dark-muted: #94A3B8;
 
   --font-sans: "Lexend", ui-sans-serif, system-ui, sans-serif;
   --font-mono: ui-monospace, monospace;
